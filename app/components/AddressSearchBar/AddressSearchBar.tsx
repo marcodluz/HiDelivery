@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import {
+  Keyboard,
   FlatList,
   TouchableOpacity,
   View,
   TextInput,
   Text,
+  TouchableWithoutFeedback,
 } from "react-native";
 import Constants from "expo-constants";
 import * as Location from "expo-location";
-import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
-
-type MarkerPosition = {
-  latitude: number;
-  longitude: number;
-};
+import { useAddress } from "@/app/context/AddressContext";
 
 const AddressSearchBar = () => {
   const [query, setQuery] = useState("");
@@ -24,10 +21,8 @@ const AddressSearchBar = () => {
   );
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [useCurrentLocation, setUseCurrentLocation] = useState<boolean>(false);
-  const [markerPosition, setMarkerPosition] = useState<MarkerPosition | null>(
-    null
-  );
   const [isListVisible, setIsListVisible] = useState(false);
+  const { setAddress, setMarkerPosition } = useAddress();
 
   useEffect(() => {
     (async () => {
@@ -71,67 +66,46 @@ const AddressSearchBar = () => {
       const response = await axios.get(apiUrl);
       const { lat, lng } = response.data.result.geometry.location;
       // Update your map region and marker position here
+      Keyboard.dismiss();
       setMarkerPosition({ latitude: lat, longitude: lng });
       setIsListVisible(false);
+      setAddress(response.data.result.formatted_address);
+      setQuery(response.data.result.formatted_address);
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <View className="h-full mt-14">
-      <TextInput
-        className="text-base bg-white h-14 rounded-2xl border-gray-200 border-2 text-center"
-        placeholder="Search for your address"
-        onChangeText={(text) => {
-          setQuery(text);
-          fetchPlaces();
-        }}
-        value={query}
-      />
-      {isListVisible && (
-        <FlatList
-          className="mt-14 absolute z-10 bg-white self-center w-full p-1"
-          data={predictions}
-          keyExtractor={(item: any) => item.place_id}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              className="my-4"
-              onPress={() => handleSelectAddress(item.place_id)}
-            >
-              <Text className="text-base">{item.description}</Text>
-            </TouchableOpacity>
-          )}
-        />
-      )}
-      {errorMsg ? <Text>{errorMsg}</Text> : null}
-      <View className="h-full mt-5">
-        <MapView
-          provider={PROVIDER_GOOGLE}
-          className="flex-1 rounded-full"
-          initialRegion={{
-            latitude: location ? location.coords.latitude : 0,
-            longitude: location ? location.coords.longitude : 0,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+      <View>
+        <TextInput
+          className="text-base bg-white h-14 rounded-2xl border-gray-200 border-2 text-center"
+          placeholder="Search for your address"
+          onChangeText={(text) => {
+            setQuery(text);
+            fetchPlaces();
           }}
-          region={
-            markerPosition
-              ? {
-                  latitude: markerPosition.latitude,
-                  longitude: markerPosition.longitude,
-                  latitudeDelta: 0.007,
-                  longitudeDelta: 0.007,
-                }
-              : undefined
-          }
-        >
-          {markerPosition && (
-            <Marker coordinate={markerPosition} title={"Selected Location"} />
-          )}
-        </MapView>
+          value={query}
+        />
+        {isListVisible && (
+          <FlatList
+            className="mt-5 absolute -z-10 bg-white self-center w-full p-4 pt-10 rounded-2xl"
+            data={predictions}
+            keyExtractor={(item: any) => item.place_id}
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                className="my-4"
+                onPress={() => handleSelectAddress(item.place_id)}
+              >
+                <Text className="text-base">{item.description}</Text>
+              </TouchableOpacity>
+            )}
+          />
+        )}
+        {errorMsg ? <Text>{errorMsg}</Text> : null}
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
 
