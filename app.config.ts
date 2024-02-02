@@ -31,6 +31,7 @@ export default ({ config }: any) => {
       extra: {
         googleApiKey: process.env.GOOGLE_API_KEY,
       },
+      experiments: { tsconfigPaths: true },
     },
   };
 };
