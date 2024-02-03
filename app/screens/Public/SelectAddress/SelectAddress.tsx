@@ -4,6 +4,7 @@ import { View } from "react-native";
 import { useAddress } from "@/app/context/AddressContext";
 import Map from "@/app/components/Map/Map";
 import BackButton from "@/app/components/BackButton/BackButton";
+import NearbyShops from "@/app/components/NearbyShops/NearbyShops";
 
 const Products = ({ navigation }: any) => {
   console.log("Selected Address: " + useAddress().address);

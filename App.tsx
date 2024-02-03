@@ -3,8 +3,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "@/app/screens/Public/Home/Home";
 import Login from "@/app/screens/Auth/Login/Login";
-import Products from "@/app/screens/Public/Products/Products";
+import Products from "@/app/screens/Public/SelectAddress/SelectAddress";
 import { AddressProvider } from "@/app/context/AddressContext";
+import DriverDashboard from "@/app/screens/Public/DriverDashboard/DriverDashboard";
 
 const Stack = createNativeStackNavigator();
 
@@ -33,6 +34,11 @@ const App = () => {
             name="Products"
             component={Products}
             options={{ title: "Products" }}
+          />
+          <Stack.Screen
+            name="Driver Dashboard"
+            component={DriverDashboard}
+            options={{ title: "Driver Dashboard" }}
           />
         </Stack.Navigator>
       </NavigationContainer>
