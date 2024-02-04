@@ -38,7 +38,13 @@ const App = () => {
           <Stack.Screen
             name="Driver Dashboard"
             component={DriverDashboard}
-            options={{ title: "Driver Dashboard" }}
+            options={{
+              title: "Orders",
+              headerShown: true,
+              headerTitleStyle: { color: "#fff" },
+              headerStyle: { backgroundColor: "#0c4a6e" },
+              headerBackVisible: false,
+            }}
           />
         </Stack.Navigator>
       </NavigationContainer>
