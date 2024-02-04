@@ -6,21 +6,25 @@ interface AnimatedButtonProps {
   label: string;
   onPress: () => void;
   width: number;
+  startTime: number;
 }
 
 const AnimatedButton = (props: AnimatedButtonProps) => {
   const [isPressed, setIsPressed] = useState(false);
   const animation = useRef(new Animated.Value(0)).current; // Initial width of the colored fill
   const buttonWidth = props.width; // Define the width of the button in pixels
-  const fillDuration = 30 * 1000; // Duration of the fill animation in milliseconds
 
   useEffect(() => {
+    const currentTime = Date.now();
+    const elapsedTime = currentTime - props.startTime; // Calculate elapsed time since startTime
+    const remainingTime = Math.max(30 * 1000 - elapsedTime, 0); // Calculate remaining time, ensuring it's not negative
+
     Animated.timing(animation, {
       toValue: buttonWidth,
-      duration: fillDuration,
+      duration: remainingTime, // Use remaining time for the animation duration
       useNativeDriver: false,
     }).start();
-  }, []);
+  }, [props.startTime, buttonWidth, animation]);
 
   const handlePress = () => {
     setIsPressed(true);
