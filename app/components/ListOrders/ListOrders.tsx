@@ -11,6 +11,7 @@ interface ListOrdersProps {
     time: string;
     price: string;
     orderTime: number;
+    accepted: boolean;
   };
 }
 
@@ -21,21 +22,34 @@ const ListOrders = ({ item }: ListOrdersProps) => {
     const timer = setInterval(() => {
       const now = Date.now();
       const endTime = item.orderTime + 30 * 1000; // 30 seconds from orderTime
-      const timeLeft = Math.max(endTime - now, 0);
+      var timeLeft = Math.max(endTime - now, 0);
 
       setRemainingTime(timeLeft);
 
+      if (item.accepted) {
+        setRemainingTime(0);
+        timeLeft = 0;
+        return;
+      }
+
       if (timeLeft === 0) {
         clearInterval(timer);
+        console.log("Order Priority Time Finished");
+      } else {
+        console.log(
+          "Order ID: " + item.id + " | Timeleft: " + Math.floor(timeLeft / 1000)
+        );
       }
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [item.orderTime]);
+  }, [item.orderTime, item.accepted]);
 
   const formatTime = (time: number) => {
-    const seconds = Math.floor(time / 1000);
-    return `0:${seconds < 10 ? "0" : ""}${seconds}`;
+    const totalSeconds = Math.floor(time / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
   };
 
   return (
@@ -66,10 +80,12 @@ const ListOrders = ({ item }: ListOrdersProps) => {
         <Text className="text-gray-500 text-base">Including Night Bonus</Text>
         <AnimatedButton
           label={"Accept Delivery"}
-          width={350}
-          startTime={item.orderTime}
+          width={334}
+          orderTime={item.orderTime}
+          accepted={item.accepted}
           onPress={() => {
-            console.log("Button Pressed with order ID: " + item.id);
+            item.accepted = true;
+            console.log("Order ID: " + item.id + " | Accepted");
           }}
         />
       </View>

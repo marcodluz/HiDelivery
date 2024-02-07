@@ -5,7 +5,7 @@ import Home from "@/app/screens/Public/Home/Home";
 import Login from "@/app/screens/Auth/Login/Login";
 import Products from "@/app/screens/Public/SelectAddress/SelectAddress";
 import { AddressProvider } from "@/app/context/AddressContext";
-import DriverDashboard from "@/app/screens/Public/DriverDashboard/DriverDashboard";
+import Orders from "@/app/screens/Public/DriverDashboard/Orders/Orders";
 
 const Stack = createNativeStackNavigator();
 
@@ -37,7 +37,7 @@ const App = () => {
           />
           <Stack.Screen
             name="Driver Dashboard"
-            component={DriverDashboard}
+            component={Orders}
             options={{
               title: "Orders",
               headerShown: true,

@@ -2,7 +2,7 @@ import React from "react";
 import { View, FlatList } from "react-native";
 import ListOrders from "@/app/components/ListOrders/ListOrders";
 
-const DriverDashboard = ({ navigation }: any) => {
+const Orders = ({ navigation }: any) => {
   const listData = [
     {
       id: "1",
@@ -10,7 +10,9 @@ const DriverDashboard = ({ navigation }: any) => {
       items: "5",
       time: "02:05",
       price: "25.89",
-      orderTime: Date.parse("2024-02-04T20:09:00.000Z"),
+      //orderTime: Date.parse("2024-02-06T23:42:00.000Z"),
+      orderTime: Date.now(),
+      accepted: false,
     },
   ];
 
@@ -28,4 +30,4 @@ const DriverDashboard = ({ navigation }: any) => {
   );
 };
 
-export default DriverDashboard;
+export default Orders;
