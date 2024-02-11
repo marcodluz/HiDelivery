@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 import AnimatedButton from "@/app/components/AnimatedButton/AnimatedButton";
+import { useNavigation } from "@react-navigation/native";
 
 interface ListOrdersProps {
   item: {
@@ -17,6 +18,7 @@ interface ListOrdersProps {
 
 const ListOrders = ({ item }: ListOrdersProps) => {
   const [remainingTime, setRemainingTime] = useState(0);
+  const navigation = useNavigation();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -78,16 +80,31 @@ const ListOrders = ({ item }: ListOrdersProps) => {
       <View className="flex items-center">
         <Text className="font-bold text-3xl">{item.price}£</Text>
         <Text className="text-gray-500 text-base">Including Night Bonus</Text>
-        <AnimatedButton
-          label={"Accept Delivery"}
-          width={334}
-          orderTime={item.orderTime}
-          accepted={item.accepted}
-          onPress={() => {
-            item.accepted = true;
-            console.log("Order ID: " + item.id + " | Accepted");
-          }}
-        />
+        {item.accepted ? (
+          <TouchableOpacity
+            className={`h-14 mt-5 bg-emerald-600 rounded-full w-full overflow-hidden justify-center items-center`}
+            onPress={() =>
+              navigation.navigate("Driver Dashboard - Order", { item: item })
+            }
+          >
+            <Text className="text-white font-semibold text-2xl">
+              <FontAwesome5 name="box-open" size={22} color="white" />
+              {"  "}
+              View Order
+            </Text>
+          </TouchableOpacity>
+        ) : (
+          <AnimatedButton
+            label={"Accept Delivery"}
+            width={334}
+            orderTime={item.orderTime}
+            accepted={item.accepted}
+            onPress={() => {
+              item.accepted = true;
+              console.log("Order ID: " + item.id + " | Accepted");
+            }}
+          />
+        )}
       </View>
     </TouchableOpacity>
   );

@@ -53,7 +53,7 @@ const AnimatedButton = (props: AnimatedButtonProps) => {
         onPress={handlePress}
         className={`h-14 mt-5 bg-sky-800 rounded-full items-center w-full w-${
           buttonWidth / 4
-        } overflow-hidden justify-center items-center`}
+        } overflow-hidden justify-center`}
       >
         <Animated.View
           className="bg-sky-600 h-full absolute left-0 top-0"

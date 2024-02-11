@@ -5,7 +5,8 @@ import Home from "@/app/screens/Public/Home/Home";
 import Login from "@/app/screens/Auth/Login/Login";
 import Products from "@/app/screens/Public/SelectAddress/SelectAddress";
 import { AddressProvider } from "@/app/context/AddressContext";
-import Orders from "@/app/screens/Public/DriverDashboard/Orders/Orders";
+import Orders from "@/app/screens/Public/DriverDashboard/Orders";
+import ViewOrder from "@/app/screens/Public/DriverDashboard/ViewOrder";
 
 const Stack = createNativeStackNavigator();
 
@@ -40,6 +41,17 @@ const App = () => {
             component={Orders}
             options={{
               title: "Orders",
+              headerShown: true,
+              headerTitleStyle: { color: "#fff" },
+              headerStyle: { backgroundColor: "#0c4a6e" },
+              headerBackVisible: false,
+            }}
+          />
+          <Stack.Screen
+            name="Driver Dashboard - Order"
+            component={ViewOrder}
+            options={{
+              title: "Order ID #000",
               headerShown: true,
               headerTitleStyle: { color: "#fff" },
               headerStyle: { backgroundColor: "#0c4a6e" },

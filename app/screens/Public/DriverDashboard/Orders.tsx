@@ -2,7 +2,7 @@ import React from "react";
 import { View, FlatList } from "react-native";
 import ListOrders from "@/app/components/ListOrders/ListOrders";
 
-const Orders = ({ navigation }: any) => {
+const Orders = () => {
   const listData = [
     {
       id: "1",
