@@ -8,7 +8,10 @@
       }
     },
     "production": {
-      "node": "20.11.0"
+      "node": "20.11.0",
+      "env": {
+        "GOOGLE_API_KEY": ""
+      }
     }
   }
 }
