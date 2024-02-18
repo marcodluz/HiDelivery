@@ -9,13 +9,13 @@ export default ({ config }: any) => {
       version: "1.0.0",
       owner: "marcodluz",
       orientation: "portrait",
-      icon: "./assets/icon.png",
+      icon: "./assets/package.png",
       userInterfaceStyle: "light",
-      splash: {
+      /*       splash: {
         image: "./assets/splash.png",
         resizeMode: "contain",
         backgroundColor: "#ffffff",
-      },
+      }, */
       assetBundlePatterns: ["**/*"],
       ios: {
         bundleIdentifier: "com.marcoluz.hidelivery",
@@ -24,7 +24,7 @@ export default ({ config }: any) => {
       android: {
         package: "com.marcoluz.hidelivery",
         adaptiveIcon: {
-          foregroundImage: "./assets/adaptive-icon.png",
+          foregroundImage: "./assets/package.png",
           backgroundColor: "#ffffff",
         },
       },
