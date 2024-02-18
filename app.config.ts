@@ -21,6 +21,7 @@ export default ({ config }: any) => {
         supportsTablet: true,
       },
       android: {
+        package: "com.marcoluz.hidelivery",
         adaptiveIcon: {
           foregroundImage: "./assets/adaptive-icon.png",
           backgroundColor: "#ffffff",
