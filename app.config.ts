@@ -7,6 +7,7 @@ export default ({ config }: any) => {
       name: "HiDelivery",
       slug: "HiDelivery",
       version: "1.0.0",
+      owner: "marcodluz",
       orientation: "portrait",
       icon: "./assets/icon.png",
       userInterfaceStyle: "light",
@@ -30,6 +31,9 @@ export default ({ config }: any) => {
       },
       extra: {
         googleApiKey: process.env.GOOGLE_API_KEY,
+        eas: {
+          projectId: "600a05a6-dec9-43ea-b6dc-1d8cd2747347",
+        },
       },
       experiments: { tsconfigPaths: true },
     },
