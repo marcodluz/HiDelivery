@@ -10,7 +10,7 @@
     "production": {
       "node": "20.11.0",
       "env": {
-        "GOOGLE_API_KEY": ""
+        "GOOGLE_API_KEY": "123"
       }
     }
   }
