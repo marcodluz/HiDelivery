@@ -18,6 +18,7 @@ export default ({ config }: any) => {
       },
       assetBundlePatterns: ["**/*"],
       ios: {
+        bundleIdentifier: "com.marcoluz.hidelivery",
         supportsTablet: true,
       },
       android: {
