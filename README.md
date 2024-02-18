@@ -228,16 +228,16 @@ Project Link: [https://github.com/marcodluz/HiDelivery](https://github.com/marco
 
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/marcodluz/Reciply.svg?style=for-the-badge
-[contributors-url]: https://github.com/marcodluz/Reciply/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/marcodluz/Reciply.svg?style=for-the-badge
-[forks-url]: https://github.com/marcodluz/Reciply/network/members
-[stars-shield]: https://img.shields.io/github/stars/marcodluz/Reciply.svg?style=for-the-badge
-[stars-url]: https://github.com/marcodluz/Reciply/stargazers
-[issues-shield]: https://img.shields.io/github/issues/marcodluz/Reciply.svg?style=for-the-badge
-[issues-url]: https://github.com/marcodluz/Reciply/issues
-[license-shield]: https://img.shields.io/github/license/marcodluz/Reciply.svg?style=for-the-badge
-[license-url]: https://github.com/marcodluz/Reciply/blob/main/LICENSE
+[contributors-shield]: https://img.shields.io/github/contributors/marcodluz/HiDelivery.svg?style=for-the-badge
+[contributors-url]: https://github.com/marcodluz/HiDelivery/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/marcodluz/HiDelivery.svg?style=for-the-badge
+[forks-url]: https://github.com/marcodluz/HiDelivery/network/members
+[stars-shield]: https://img.shields.io/github/stars/marcodluz/HiDelivery.svg?style=for-the-badge
+[stars-url]: https://github.com/marcodluz/HiDelivery/stargazers
+[issues-shield]: https://img.shields.io/github/issues/marcodluz/HiDelivery.svg?style=for-the-badge
+[issues-url]: https://github.com/marcodluz/HiDelivery/issues
+[license-shield]: https://img.shields.io/github/license/marcodluz/HiDelivery.svg?style=for-the-badge
+[license-url]: https://github.com/marcodluz/HiDelivery/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/marcodluz
 [product-screenshot]: images/screenshot.png
