@@ -64,6 +64,8 @@ Introducing HiDelivery, the app that helps you get your orders faster!
 
 ## About The Project
 
+This project still has no description. But this will be updated soon...
+
 <!-- <a  href="">
 <img  src=""  alt="Available on the App Store"  width="125"  height="50">
 </a> -->
@@ -176,7 +178,7 @@ To get a local copy up and running follow these next steps.
 
 ## Roadmap
 
-- [] User Interface
+- [ ] User Interface
 
 See the [open issues](https://github.com/marcodluz/HiDelivery/issues) for a full list of proposed features (and known issues).
 
