@@ -1,5 +1,10 @@
-describe("Generic Test", () => {
-  it("should always pass", () => {
-    expect(true).toBeTruthy();
+import React from "react";
+import renderer from "react-test-renderer";
+import Home from "./Home";
+
+describe("Screen - Home", () => {
+  it("renders correctly", () => {
+    const tree = renderer.create(<Home />).toJSON();
+    expect(tree).toBeTruthy();
   });
 });
