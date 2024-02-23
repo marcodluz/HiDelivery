@@ -1,9 +1,10 @@
 import React from "react";
 import { View, Text } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
+import { useOrder } from "@/app/context/OrderContext";
 
-const ViewOrder = ({ route }: any) => {
-  const { item } = route.params;
+const ViewOrder = () => {
+  const { order } = useOrder();
 
   return (
     <View className="bg-gray-100 h-full">
@@ -17,10 +18,12 @@ const ViewOrder = ({ route }: any) => {
             </View>
             <View className="justify-around">
               <Text className="text-lg">
-                <Text className="font-bold">{item.distance} mi</Text> (until{" "}
-                {item.time})
+                <Text className="font-bold">{order?.distance} mi</Text> (until{" "}
+                {order?.time})
               </Text>
-              <Text className="font-bold text-lg">{item.items} items</Text>
+              <Text className="font-bold text-lg">
+                {order?.items.length} items
+              </Text>
             </View>
           </View>
         </View>

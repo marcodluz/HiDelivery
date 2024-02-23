@@ -3,32 +3,28 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 import AnimatedButton from "@/app/components/AnimatedButton/AnimatedButton";
 import { useNavigation } from "@react-navigation/native";
+import { IOrder } from "@/app/interfaces/IOrder";
+import { useOrder } from "@/app/context/OrderContext";
 
-interface ListOrdersProps {
-  item: {
-    id: string;
-    distance: string;
-    items: string;
-    time: string;
-    price: string;
-    orderTime: number;
-    accepted: boolean;
-  };
+interface RenderOrderProps {
+  order: IOrder;
 }
 
-const ListOrders = ({ item }: ListOrdersProps) => {
+const RenderOrder = ({ order }: RenderOrderProps) => {
   const [remainingTime, setRemainingTime] = useState(0);
+  const [isAccepted, setIsAccepted] = useState(order.accepted);
+  const { setOrder } = useOrder();
   const navigation = useNavigation();
 
   useEffect(() => {
     const timer = setInterval(() => {
       const now = Date.now();
-      const endTime = item.orderTime + 30 * 1000; // 30 seconds from orderTime
+      const endTime = order.orderTime + 30 * 1000; // 30 seconds from orderTime
       var timeLeft = Math.max(endTime - now, 0);
 
       setRemainingTime(timeLeft);
 
-      if (item.accepted) {
+      if (isAccepted) {
         setRemainingTime(0);
         timeLeft = 0;
         return;
@@ -39,13 +35,16 @@ const ListOrders = ({ item }: ListOrdersProps) => {
         console.log("Order Priority Time Finished");
       } else {
         console.log(
-          "Order ID: " + item.id + " | Timeleft: " + Math.floor(timeLeft / 1000)
+          "Order ID: " +
+            order.id +
+            " | Timeleft: " +
+            Math.floor(timeLeft / 1000)
         );
       }
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [item.orderTime, item.accepted]);
+  }, [order.orderTime, isAccepted]);
 
   const formatTime = (time: number) => {
     const totalSeconds = Math.floor(time / 1000);
@@ -64,10 +63,10 @@ const ListOrders = ({ item }: ListOrdersProps) => {
         </View>
         <View className="justify-around">
           <Text className="text-lg">
-            <Text className="font-bold">{item.distance} mi</Text> (until{" "}
-            {item.time})
+            <Text className="font-bold">{order.distance} mi</Text> (until{" "}
+            {order.time})
           </Text>
-          <Text className="font-bold text-lg">{item.items} items</Text>
+          <Text className="font-bold text-lg">{order.items.length} items</Text>
           <Text className="font-bold text-lg">
             Global Announcement{" "}
             <Text className="font-normal text-gray-500">
@@ -78,14 +77,15 @@ const ListOrders = ({ item }: ListOrdersProps) => {
       </View>
       <View className="border-b border-gray-300 my-5"></View>
       <View className="flex items-center">
-        <Text className="font-bold text-3xl">{item.price}£</Text>
+        <Text className="font-bold text-3xl">{order.price}£</Text>
         <Text className="text-gray-500 text-base">Including Night Bonus</Text>
-        {item.accepted ? (
+        {isAccepted ? (
           <TouchableOpacity
             className={`h-14 mt-5 bg-emerald-600 rounded-full w-full overflow-hidden justify-center items-center`}
-            onPress={() =>
-              navigation.navigate("Driver Dashboard - Order", { item: item })
-            }
+            onPress={() => {
+              setOrder(order);
+              navigation.navigate("Driver Dashboard - Order");
+            }}
           >
             <Text className="text-white font-semibold text-2xl">
               <FontAwesome5 name="box-open" size={22} color="white" />
@@ -97,11 +97,11 @@ const ListOrders = ({ item }: ListOrdersProps) => {
           <AnimatedButton
             label={"Accept Delivery"}
             width={334}
-            orderTime={item.orderTime}
-            accepted={item.accepted}
+            orderTime={order.orderTime}
+            accepted={isAccepted}
             onPress={() => {
-              item.accepted = true;
-              console.log("Order ID: " + item.id + " | Accepted");
+              setIsAccepted(true);
+              console.log("Order ID: " + order.id + " | Accepted");
             }}
           />
         )}
@@ -110,4 +110,4 @@ const ListOrders = ({ item }: ListOrdersProps) => {
   );
 };
 
-export default ListOrders;
+export default RenderOrder;

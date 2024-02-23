@@ -1,18 +1,24 @@
 import React from "react";
 import { View, FlatList } from "react-native";
-import ListOrders from "@/app/components/ListOrders/ListOrders";
+import { IOrder } from "@/app/interfaces/IOrder";
+import RenderOrder from "@/app/components/RenderOrder/RenderOrder";
+import { useOrder } from "@/app/context/OrderContext";
 
 const Orders = () => {
-  const listData = [
+  const listData: IOrder[] = [
     {
       id: "1",
       distance: "18.3",
-      items: "5",
       time: "02:05",
       price: "25.89",
       //orderTime: Date.parse("2024-02-06T23:42:00.000Z"),
       orderTime: Date.now(),
       accepted: false,
+      items: [
+        { id: 1, title: "Item1" },
+        { id: 2, title: "Item2" },
+        { id: 3, title: "Item3" },
+      ],
     },
   ];
 
@@ -23,7 +29,7 @@ const Orders = () => {
         <FlatList
           data={listData}
           keyExtractor={(item) => item.id}
-          renderItem={({ item }) => <ListOrders item={item} />}
+          renderItem={({ item }) => <RenderOrder order={item} />}
         />
       </View>
     </View>
