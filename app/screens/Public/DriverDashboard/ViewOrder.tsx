@@ -7,10 +7,10 @@ const ViewOrder = () => {
   const { order } = useOrder();
 
   return (
-    <View className="bg-gray-100 h-full">
-      <View className="h-48 w-full absolute top-0 bg-sky-700"></View>
-      <View className="px-5">
-        <View className="bg-white w-full rounded-2xl p-5 shadow-sm mt-5 flex justify-between">
+    <View className="bg-white h-full">
+      <View className="p-5">
+        <View className="bg-red-100 w-full flex justify-between">
+          <Text className="font-bold text-xl">Order #001</Text>
           <View className="flex-row gap-3 h-32">
             <View className="justify-around">
               <FontAwesome5 name="map-marker-alt" size={18} color="black" />

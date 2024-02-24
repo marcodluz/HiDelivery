@@ -1,5 +1,5 @@
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "@/app/screens/Public/Home/Home";
 import Login from "@/app/screens/Auth/Login/Login";
@@ -53,11 +53,12 @@ const App = () => {
               name="Driver Dashboard - Order"
               component={ViewOrder}
               options={{
-                title: "Order ID #000",
+                title: "",
                 headerShown: true,
-                headerTitleStyle: { color: "#fff" },
-                headerStyle: { backgroundColor: "#0c4a6e" },
-                headerBackVisible: false,
+                headerTintColor: "black",
+                headerStyle: {
+                  backgroundColor: "transparent",
+                },
               }}
             />
           </Stack.Navigator>
