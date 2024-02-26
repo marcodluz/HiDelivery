@@ -15,9 +15,22 @@ const Orders = () => {
       orderTime: Date.now(),
       accepted: false,
       items: [
-        { id: 1, title: "Item1" },
-        { id: 2, title: "Item2" },
-        { id: 3, title: "Item3" },
+        {
+          id: 1,
+          title: "Original Cheeseburger",
+          image: require("@/assets/burger.jpg"),
+          quantity: 3,
+          minPrice: 5.99,
+          maxPrice: 7.99,
+        },
+        {
+          id: 2,
+          title: "Chips",
+          image: null,
+          quantity: 2,
+          minPrice: 2.57,
+          maxPrice: 5.5,
+        },
       ],
     },
   ];
