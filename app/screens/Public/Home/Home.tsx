@@ -5,7 +5,11 @@ const Home = ({ navigation }: any) => {
   return (
     <View className="flex-1 justify-between items-center bg-white">
       <View className="w-full items-center justify-center h-1/2 bg-green-100">
-        <Image className="w-64 h-64" source={require("@/assets/package.png")} />
+        <Image
+          testID="image"
+          className="w-64 h-64"
+          source={require("@/assets/package.png")}
+        />
       </View>
       <View className="h-1/2 p-9 w-full justify-between pt-16">
         <View>
