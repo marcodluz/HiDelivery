@@ -1,10 +1,12 @@
 import React from "react";
-import renderer from "react-test-renderer";
+import { render } from "@testing-library/react-native";
+
 import Home from "./Home";
 
-describe("Screen - Home", () => {
+describe("<Home />", () => {
   it("renders correctly", () => {
-    const tree = renderer.create(<Home />).toJSON();
-    expect(tree).toBeTruthy();
+    const home = render(<Home />);
+
+    expect(home).toBeTruthy();
   });
 });
