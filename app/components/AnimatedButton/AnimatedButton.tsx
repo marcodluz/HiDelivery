@@ -51,16 +51,16 @@ const AnimatedButton = (props: AnimatedButtonProps) => {
     <>
       <TouchableOpacity
         onPress={handlePress}
-        className={`h-14 mt-5 bg-sky-800 rounded-full items-center w-full w-${
+        className={`h-14 mt-5 bg-rose-700 rounded-full items-center w-full w-${
           buttonWidth / 4
         } overflow-hidden justify-center`}
       >
         <Animated.View
-          className="bg-sky-600 h-full absolute left-0 top-0"
+          className="bg-rose-600 h-full absolute left-0 top-0"
           style={{ width: animation }}
         />
         <Text className="text-white font-semibold text-2xl">
-          <FontAwesome5 name="shipping-fast" size={22} color="white" />
+          <FontAwesome5 name="check-circle" size={22} color="white" />
           {"  "}
           {props.label}
         </Text>

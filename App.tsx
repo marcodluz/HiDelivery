@@ -42,11 +42,12 @@ const App = () => {
               name="Driver Dashboard"
               component={Orders}
               options={{
-                title: "Orders",
+                title: "",
                 headerShown: true,
-                headerTitleStyle: { color: "#fff" },
-                headerStyle: { backgroundColor: "#0c4a6e" },
-                headerBackVisible: false,
+                headerTintColor: "black",
+                headerStyle: {
+                  backgroundColor: "transparent",
+                },
               }}
             />
             <Stack.Screen
