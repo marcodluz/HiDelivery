@@ -205,7 +205,13 @@ To get a local copy up and running follow these next steps.
   - [ ] Show order details
   - [ ] Show PIN code in big
 - [ ] Customer can browse items
+
   - [ ] Have categories
+
+- [ ] Integrate database
+  - [ ] Firebase authentication
+  - [ ] Firebase storage
+  - [ ] Firebase real-time
 
 See the [open issues](https://github.com/marcodluz/HiDelivery/issues) for a full list of proposed features (and known issues).
 
