@@ -190,6 +190,8 @@ To get a local copy up and running follow these next steps.
 
 - [ ] Driver can view order
 
+  - [x] Show order details
+
   - [ ] Create a route current location > store > customer address
 
     - [ ] Driver can view the stores that are opened around him
@@ -229,8 +231,11 @@ To get a local copy up and running follow these next steps.
   - [ ] Have categories
 
 - [ ] Integrate database
+
   - [ ] Firebase authentication
+
   - [ ] Firebase storage
+
   - [ ] Firebase real-time
 
 See the [open issues](https://github.com/marcodluz/HiDelivery/issues) for a full list of proposed features (and known issues).
