@@ -2,7 +2,6 @@ import React from "react";
 import { View, FlatList } from "react-native";
 import { IOrder } from "@/app/interfaces/IOrder";
 import RenderOrder from "@/app/components/RenderOrder/RenderOrder";
-import { useOrder } from "@/app/context/OrderContext";
 
 const Orders = () => {
   const listData: IOrder[] = [
@@ -37,7 +36,6 @@ const Orders = () => {
 
   return (
     <View className="bg-gray-100 h-full">
-      <View className="h-48 w-full absolute top-0 bg-sky-700"></View>
       <View className="px-5">
         <FlatList
           data={listData}

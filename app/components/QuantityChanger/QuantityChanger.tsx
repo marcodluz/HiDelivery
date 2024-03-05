@@ -25,19 +25,19 @@ const QuantityChanger = (props: QuantityChangerProps) => {
   return (
     <View className="flex-row bg-gray-100 rounded-full w-2/3 justify-between items-center">
       <TouchableOpacity
-        className="bg-emerald-400 w-10 h-10 rounded-tl-3xl rounded-bl-3xl rounded-tr-lg rounded-br-lg justify-center items-center"
+        className="bg-rose-600 w-10 h-10 rounded-tl-3xl rounded-bl-3xl rounded-tr-lg rounded-br-lg justify-center items-center"
         onPress={handleMinusPress}
       >
-        <FontAwesome5 name="minus" size={18} color="black" />
+        <FontAwesome5 name="minus" size={18} color="white" />
       </TouchableOpacity>
       <Text className="font-bold text-xl">
         {quantity}/{maxQuantity}
       </Text>
       <TouchableOpacity
-        className="bg-emerald-400 w-10 h-10 rounded-tr-3xl rounded-br-3xl rounded-tl-lg rounded-bl-lg justify-center items-center"
+        className="bg-rose-600 w-10 h-10 rounded-tr-3xl rounded-br-3xl rounded-tl-lg rounded-bl-lg justify-center items-center"
         onPress={handlePlusPress}
       >
-        <FontAwesome5 name="plus" size={18} color="black" />
+        <FontAwesome5 name="plus" size={18} color="white" />
       </TouchableOpacity>
     </View>
   );

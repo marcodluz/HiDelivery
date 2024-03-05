@@ -6,7 +6,7 @@ const BackButton = ({ navigation }: any) => {
   return (
     <>
       <TouchableOpacity
-        className="py-2 px-5 bg-green-500 rounded-3xl items-center self-start"
+        className="py-2 px-5 bg-rose-600 rounded-3xl items-center self-start"
         onPress={() => navigation.goBack()}
       >
         <Text className="text-white font-semibold text-2xl">

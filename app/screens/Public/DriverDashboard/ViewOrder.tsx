@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, ScrollView } from "react-native";
+import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { useOrder } from "@/app/context/OrderContext";
 import QuantityChanger from "@/app/components/QuantityChanger/QuantityChanger";
@@ -52,6 +52,14 @@ const ViewOrder = () => {
             </View>
           ))}
         </ScrollView>
+        <TouchableOpacity
+          className={`h-14 mt-5 bg-rose-600 rounded-full items-center w-full overflow-hidden justify-center`}
+        >
+          <Text className="text-white font-semibold text-2xl">
+            <FontAwesome5 name="shipping-fast" size={22} color="white" />{" "}
+            Deliver Order
+          </Text>
+        </TouchableOpacity>
       </View>
     </View>
   );

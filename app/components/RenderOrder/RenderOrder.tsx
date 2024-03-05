@@ -81,7 +81,7 @@ const RenderOrder = ({ order }: RenderOrderProps) => {
         <Text className="text-gray-500 text-base">Including Night Bonus</Text>
         {isAccepted ? (
           <TouchableOpacity
-            className={`h-14 mt-5 bg-emerald-600 rounded-full w-full overflow-hidden justify-center items-center`}
+            className={`h-14 mt-5 bg-rose-600 rounded-full w-full overflow-hidden justify-center items-center`}
             onPress={() => {
               setOrder(order);
               navigation.navigate("Driver Dashboard - Order");
