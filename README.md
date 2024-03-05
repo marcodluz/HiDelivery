@@ -178,17 +178,21 @@ To get a local copy up and running follow these next steps.
 
 ## Roadmap
 
-### MVP
+### MVP (Minimum Viable Product)
 
-- [ ] Driver being able to accept orders
+The MVP focuses on core functionalities to validate the app's concept and gather user feedback.
 
-- [ ] Send notification to the closest driver
+User (Customer):
+
+- [ ] **Driver being able to accept orders**
+
+- [ ] **Send notification to the closest driver**
 
   - [x] Timer to accept the order
 
   - [ ] Send global announcement
 
-- [ ] Driver can view order
+- [ ] **Driver can view order**
 
   - [x] Show order details
 
@@ -204,11 +208,11 @@ To get a local copy up and running follow these next steps.
 
   - [ ] Driver can complete the order using the customer's PIN code
 
-- [x] Customer can select their address (using google maps)
+- [x] **Customer can select their address (using google maps)**
 
   - [x] Use phone current location
 
-- [ ] Customer can create an order
+- [ ] **Customer can create an order**
 
   - [ ] Add items
 
@@ -220,17 +224,17 @@ To get a local copy up and running follow these next steps.
 
   - [ ] Cancel order before being accepted by a driver
 
-- [ ] Customer can see ongoing order
+- [ ] **Customer can see ongoing order**
 
   - [ ] Show order details
 
   - [ ] Show PIN code in big
 
-- [ ] Customer can browse items
+- [ ] **Customer can browse items**
 
   - [ ] Have categories
 
-- [ ] Integrate database
+- [ ] **Integrate database**
 
   - [ ] Firebase authentication
 
