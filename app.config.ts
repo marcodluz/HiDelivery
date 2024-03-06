@@ -38,7 +38,7 @@ export default ({ config }: any) => {
         },
       },
       experiments: { tsconfigPaths: true },
-      plugins: ["react-native-permissions"],
+      //plugins: ["react-native-permissions"],
     },
   };
 };
