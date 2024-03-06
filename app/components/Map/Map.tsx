@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
-import { View } from "react-native";
+import React from "react";
+import { TouchableOpacity, View, Text } from "react-native";
 import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import { useAddress } from "@/app/context/AddressContext";
+import { FontAwesome5 } from "@expo/vector-icons";
 
 const Map = () => {
   const { markerPosition } = useAddress();
@@ -12,7 +13,7 @@ const Map = () => {
     <View className="h-full">
       <MapView
         provider={PROVIDER_GOOGLE}
-        className="flex-1 rounded-full"
+        className="h-2/3 rounded-full"
         initialRegion={{
           latitude: DEFAULT_LATITUDE,
           longitude: DEFAULT_LONGITUDE,
@@ -34,6 +35,13 @@ const Map = () => {
           <Marker coordinate={markerPosition} title={"Selected Location"} />
         )}
       </MapView>
+      {useAddress().address && (
+        <TouchableOpacity
+          className={`h-14 mt-5 bg-rose-600 rounded-full items-center w-full overflow-hidden justify-center`}
+        >
+          <Text className="text-white font-semibold text-2xl">Confirm</Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 };

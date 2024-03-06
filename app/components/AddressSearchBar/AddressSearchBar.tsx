@@ -43,7 +43,7 @@ const AddressSearchBar = () => {
   const apiKey = Constants.expoConfig?.extra?.googleApiKey;
 
   const fetchPlaces = async () => {
-    let apiUrl = `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${query}&key=${apiKey}&language=en`;
+    let apiUrl = `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${query}&key=AIzaSyAY5WTEIoFS2uxArw633T-j4rXcTUC7DuY&language=en`;
 
     // If the useCurrentLocation flag is true and location data is available, include the location in the request
     if (useCurrentLocation && location) {

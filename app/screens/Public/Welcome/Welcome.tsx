@@ -23,7 +23,7 @@ const Home = ({ navigation }: any) => {
 
         <TouchableOpacity
           className="py-7 bg-rose-600 rounded-3xl items-center"
-          onPress={() => navigation.navigate("Products")}
+          onPress={() => navigation.navigate("Customer - Select Address")}
         >
           <Text className="text-white font-semibold text-2xl">Get Started</Text>
         </TouchableOpacity>

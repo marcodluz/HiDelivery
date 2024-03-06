@@ -1,9 +1,9 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Home from "@/app/screens/Public/Home/Home";
+import Welcome from "@/app/screens/Public/Welcome/Welcome";
 import Login from "@/app/screens/Auth/Login/Login";
-import Products from "@/app/screens/Public/SelectAddress/SelectAddress";
+import SelectAddress from "@/app/screens/Public/SelectAddress/SelectAddress";
 import { AddressProvider } from "@/app/context/AddressContext";
 import Orders from "@/app/screens/Public/DriverDashboard/Orders";
 import ViewOrder from "@/app/screens/Public/DriverDashboard/ViewOrder";
@@ -24,8 +24,8 @@ const App = () => {
             })}
           >
             <Stack.Screen
-              name="Home"
-              component={Home}
+              name="Welcome"
+              component={Welcome}
               options={{ title: "Welcome" }}
             />
             <Stack.Screen
@@ -34,9 +34,9 @@ const App = () => {
               options={{ title: "Login" }}
             />
             <Stack.Screen
-              name="Products"
-              component={Products}
-              options={{ title: "Products" }}
+              name="Customer - Select Address"
+              component={SelectAddress}
+              options={{ presentation: "modal" }}
             />
             <Stack.Screen
               name="Driver Dashboard"
@@ -46,7 +46,7 @@ const App = () => {
                 headerShown: true,
                 headerTintColor: "black",
                 headerStyle: {
-                  backgroundColor: "transparent",
+                  backgroundColor: "white",
                 },
               }}
             />
@@ -58,7 +58,7 @@ const App = () => {
                 headerShown: true,
                 headerTintColor: "black",
                 headerStyle: {
-                  backgroundColor: "transparent",
+                  backgroundColor: "white",
                 },
               }}
             />
