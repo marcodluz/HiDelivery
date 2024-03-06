@@ -7,6 +7,11 @@ import {
   update,
   onValue,
   remove,
+  endAt,
+  orderByChild,
+  query,
+  startAt,
+  get,
 } from "firebase/database";
 import { db } from "@/firebase";
 import { IOrder } from "@/app/interfaces/IOrder";
@@ -45,7 +50,6 @@ export function getOrder(orderID: string) {
 
   onValue(orderRef, (snapshot) => {
     const data = snapshot.val();
-    console.log("Order Name: " + data.name);
     return data;
   });
 }
@@ -60,4 +64,20 @@ export function deleteOrder(orderID: string) {
     .catch((error) => {
       alert(error);
     });
+}
+
+export function getListOrders(startTime: number, endTime: number) {
+  const orderRef = query(
+    ref(db, "order/"),
+    orderByChild("orderTime"),
+    startAt(startTime),
+    endAt(endTime)
+  );
+
+  onValue(orderRef, (snapshot) => {
+    const data = snapshot.val() || [];
+    const ordersList = Object.values(data);
+    console.log(ordersList);
+    return ordersList;
+  });
 }

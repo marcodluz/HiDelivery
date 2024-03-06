@@ -1,10 +1,21 @@
-import React from "react";
-import { View, FlatList } from "react-native";
+import React, { useEffect, useMemo, useState } from "react";
+import { View, FlatList, Text } from "react-native";
 import { IOrder } from "@/app/interfaces/IOrder";
 import RenderOrder from "@/app/components/RenderOrder/RenderOrder";
+import * as Database from "@/app/services/database";
+import { db } from "@/firebase";
+import {
+  query,
+  ref,
+  orderByChild,
+  startAt,
+  endAt,
+  onValue,
+} from "firebase/database";
+import { useOrders } from "@/app/services/useOrders";
 
 const Orders = () => {
-  const listData: IOrder[] = [
+  /*   const listData: IOrder[] = [
     {
       id: "1",
       distance: "18.3",
@@ -24,16 +35,22 @@ const Orders = () => {
         },
       ],
     },
-  ];
+  ]; */
+  const [startTime, setStartTime] = useState(1709745048421); // Replace with your start time
+  const [endTime, setEndTime] = useState(1709756842810);
+  const ordersList = useOrders(startTime, endTime);
 
   return (
     <View className="bg-gray-100 h-full">
       <View className="px-5">
         <FlatList
-          data={listData}
-          keyExtractor={(item) => item.id}
+          data={ordersList}
+          keyExtractor={(item) => item.key}
           renderItem={({ item }) => <RenderOrder order={item} />}
         />
+        {/*         {ordersList.map((item, index) => (
+          <Text key={index}>{item.price}</Text>
+        ))} */}
       </View>
     </View>
   );

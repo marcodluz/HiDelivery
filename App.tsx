@@ -6,9 +6,9 @@ import Login from "@/app/screens/Auth/Login/Login";
 import Home from "@/app/screens/Public/Home/Home";
 import SelectAddress from "@/app/screens/Public/SelectAddress/SelectAddress";
 import { AddressProvider } from "@/app/context/AddressContext";
-import Orders from "@/app/screens/Public/DriverDashboard/Orders";
-import ViewOrder from "@/app/screens/Public/DriverDashboard/ViewOrder";
-import { OrderProvider } from "./app/context/OrderContext";
+import Orders from "@/app/screens/Driver/Orders/Orders";
+import ViewOrder from "@/app/screens/Driver/ViewOrder/ViewOrder";
+import { OrderProvider } from "@/app/context/OrderContext";
 
 const Stack = createNativeStackNavigator();
 

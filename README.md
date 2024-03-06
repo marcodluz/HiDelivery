@@ -234,13 +234,13 @@ The MVP focuses on core functionalities to validate the app's concept and gather
 
   - ⭕ Have categories
 
-- ⭕ [**Integrate database**](https://github.com/marcodluz/HiDelivery/issues/8)
+- 🟡 [**Integrate database**](https://github.com/marcodluz/HiDelivery/issues/8)
 
   - ⭕ Firebase authentication
 
   - ⭕ Firebase storage
 
-  - ⭕ Firebase real-time
+  - ✅ Firebase real-time
 
 See the [open issues](https://github.com/marcodluz/HiDelivery/issues) for a full list of proposed features (and known issues).
 

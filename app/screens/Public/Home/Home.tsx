@@ -22,7 +22,7 @@ const order = {
 
 const Home = () => {
   return (
-    <View className="flex-1 justify-between items-center bg-white">
+    <View className="flex-1 items-center bg-white">
       <TouchableOpacity
         className="py-2 items-center"
         onPress={() => Database.createOrder(order)}
@@ -30,6 +30,12 @@ const Home = () => {
         <Text className="text-black font-semibold text-lg">
           Create an Order
         </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        className="py-2 items-center"
+        onPress={() => Database.getListOrders(1709745048421, 1709756842810)}
+      >
+        <Text className="text-black font-semibold text-lg">Get an Order</Text>
       </TouchableOpacity>
     </View>
   );
