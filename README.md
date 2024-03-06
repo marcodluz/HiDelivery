@@ -182,11 +182,9 @@ To get a local copy up and running follow these next steps.
 
 The MVP focuses on core functionalities to validate the app's concept and gather user feedback.
 
-User (Customer):
-
 - [ ] **Driver being able to accept orders**
 
-- [ ] **Send notification to the closest driver**
+- [ ] **Send notification to the closest driver** [🟡](https://github.com/marcodluz/HiDelivery/issues/3)
 
   - [x] Timer to accept the order
 
