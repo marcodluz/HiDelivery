@@ -212,7 +212,7 @@ The MVP focuses on core functionalities to validate the app's concept and gather
 
   - ✅ Use phone current location
 
-- ⭕ **Customer can create an order**
+- ⭕ [**Customer can create an order**](https://github.com/marcodluz/HiDelivery/issues/5)
 
   - ⭕ Add items
 
@@ -224,17 +224,17 @@ The MVP focuses on core functionalities to validate the app's concept and gather
 
   - ⭕ Cancel order before being accepted by a driver
 
-- ⭕ **Customer can see ongoing order**
+- ⭕ [**Customer can see ongoing order**](https://github.com/marcodluz/HiDelivery/issues/6)
 
   - ⭕ Show order details
 
   - ⭕ Show PIN code in big
 
-- ⭕ **Customer can browse items**
+- ⭕ [**Customer can browse items**](https://github.com/marcodluz/HiDelivery/issues/7)
 
   - ⭕ Have categories
 
-- ⭕ **Integrate database**
+- ⭕ [**Integrate database**](https://github.com/marcodluz/HiDelivery/issues/8)
 
   - ⭕ Firebase authentication
 
