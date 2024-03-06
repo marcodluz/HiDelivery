@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Welcome from "@/app/screens/Public/Welcome/Welcome";
 import Login from "@/app/screens/Auth/Login/Login";
+import Home from "@/app/screens/Public/Home/Home";
 import SelectAddress from "@/app/screens/Public/SelectAddress/SelectAddress";
 import { AddressProvider } from "@/app/context/AddressContext";
 import Orders from "@/app/screens/Public/DriverDashboard/Orders";
@@ -17,7 +18,7 @@ const App = () => {
       <AddressProvider>
         <NavigationContainer>
           <Stack.Navigator
-            initialRouteName="Home"
+            initialRouteName="Welcome"
             screenOptions={({ route, navigation }) => ({
               headerShown: false,
               gestureEnabled: true,
@@ -27,6 +28,18 @@ const App = () => {
               name="Welcome"
               component={Welcome}
               options={{ title: "Welcome" }}
+            />
+            <Stack.Screen
+              name="Home"
+              component={Home}
+              options={{
+                title: "Home",
+                headerShown: true,
+                headerTintColor: "black",
+                headerStyle: {
+                  backgroundColor: "white",
+                },
+              }}
             />
             <Stack.Screen
               name="Login"

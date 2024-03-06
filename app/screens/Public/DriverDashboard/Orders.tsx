@@ -22,14 +22,6 @@ const Orders = () => {
           minPrice: 5.99,
           maxPrice: 7.99,
         },
-        {
-          id: 2,
-          title: "Chips",
-          image: null,
-          quantity: 2,
-          minPrice: 2.57,
-          maxPrice: 5.5,
-        },
       ],
     },
   ];

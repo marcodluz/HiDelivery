@@ -1,14 +1,25 @@
 import { useState } from "react";
-import { child, push, ref, set, update, onValue } from "firebase/database";
+import {
+  child,
+  push,
+  ref,
+  set,
+  update,
+  onValue,
+  remove,
+} from "firebase/database";
 import { db } from "@/firebase";
+import { IOrder } from "@/app/interfaces/IOrder";
 
-export function createOrder() {
-  const newOrderID = push(child(ref(db), "order")).key;
-  const name = "test";
+interface OrderData extends IOrder {
+  [key: string]: any; // Allow any property name
+}
 
-  set(ref(db, "order/" + newOrderID), {
-    name: name,
-  })
+export function createOrder(createData: OrderData) {
+  const randomUniqueKey = push(child(ref(db), "order")).key;
+  const orderRef = ref(db, "order/" + randomUniqueKey);
+
+  set(orderRef, createData)
     .then(() => {
       alert("Data submitted");
     })
@@ -17,13 +28,10 @@ export function createOrder() {
     });
 }
 
-interface OrderUpdateData {
-  [key: string]: any; // Allow any property name
-  name?: string; // Specify optional name property
-}
+export function updateOrder(orderID: string, updateData: OrderData) {
+  const orderRef = ref(db, "order/" + orderID);
 
-export function updateOrder(orderID: string, updateData: OrderUpdateData) {
-  update(ref(db, "order/" + orderID), updateData)
+  update(orderRef, updateData)
     .then(() => {
       alert("Data updated");
     })
@@ -34,8 +42,22 @@ export function updateOrder(orderID: string, updateData: OrderUpdateData) {
 
 export function getOrder(orderID: string) {
   const orderRef = ref(db, "order/" + orderID);
+
   onValue(orderRef, (snapshot) => {
     const data = snapshot.val();
     console.log("Order Name: " + data.name);
+    return data;
   });
+}
+
+export function deleteOrder(orderID: string) {
+  const orderRef = ref(db, "order/" + orderID);
+
+  remove(orderRef)
+    .then(() => {
+      alert("Data deleted");
+    })
+    .catch((error) => {
+      alert(error);
+    });
 }

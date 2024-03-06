@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, TouchableOpacity, View, Image } from "react-native";
 
-const Home = ({ navigation }: any) => {
+const Welcome = ({ navigation }: any) => {
   return (
     <View className="flex-1 justify-between items-center bg-white">
       <View className="w-full items-center justify-center h-1/2 bg-rose-100">
@@ -23,7 +23,7 @@ const Home = ({ navigation }: any) => {
 
         <TouchableOpacity
           className="py-7 bg-rose-600 rounded-3xl items-center"
-          onPress={() => navigation.navigate("Customer - Select Address")}
+          onPress={() => navigation.navigate("Home")}
         >
           <Text className="text-white font-semibold text-2xl">Get Started</Text>
         </TouchableOpacity>
@@ -31,13 +31,11 @@ const Home = ({ navigation }: any) => {
           className="py-2 items-center"
           onPress={() => navigation.navigate("Driver Dashboard")}
         >
-          <Text className="text-black font-semibold text-l">
-            Driver Dashboard
-          </Text>
+          <Text className="text-black font-semibold">Driver Dashboard</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
 };
 
-export default Home;
+export default Welcome;
