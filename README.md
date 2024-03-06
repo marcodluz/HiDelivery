@@ -184,27 +184,27 @@ The MVP focuses on core functionalities to validate the app's concept and gather
 
 - [ ] **Driver being able to accept orders**
 
-- 🟡 [**Send notification to the closest driver**](https://github.com/marcodluz/HiDelivery/issues/3)
+🟡 [**Send notification to the closest driver**](https://github.com/marcodluz/HiDelivery/issues/3)
 
-  - [x] Timer to accept the order
+- [x] Timer to accept the order
 
-  - [ ] Send global announcement
+- [ ] Send global announcement
 
-- 🟡 [**Driver can view order**](https://github.com/marcodluz/HiDelivery/issues/4)
+🟡 [**Driver can view order**](https://github.com/marcodluz/HiDelivery/issues/4)
 
-  - [x] Show order details
+- [x] Show order details
 
-  - [ ] Create a route current location > store > customer address
+- [ ] Create a route current location > store > customer address
 
-    - [ ] Driver can view the stores that are opened around him
+  - [ ] Driver can view the stores that are opened around him
 
-      - [ ] Show open and closing time
+    - [ ] Show open and closing time
 
-      - [ ] Show distance
+    - [ ] Show distance
 
-  - [x] Driver can edit the quantity of items that has already picked up
+- [x] Driver can edit the quantity of items that has already picked up
 
-  - [ ] Driver can complete the order using the customer's PIN code
+- [ ] Driver can complete the order using the customer's PIN code
 
 - [x] **Customer can select their address (using google maps)** (✅ [Started](https://github.com/marcodluz/HiDelivery/issues/4))
 
