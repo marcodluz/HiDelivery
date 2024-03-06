@@ -178,7 +178,7 @@ To get a local copy up and running follow these next steps.
 
 ## Roadmap
 
-✅ (Completed) | 🟡 (Started) | ⭕ (Not Started)
+**✅ Completed | 🟡 Started | ⭕ Not Started**
 
 ### MVP (Minimum Viable Product)
 
