@@ -178,67 +178,69 @@ To get a local copy up and running follow these next steps.
 
 ## Roadmap
 
+✅ (Completed) | 🟡 (Started) | ⭕ (Not Started)
+
 ### MVP (Minimum Viable Product)
 
 The MVP focuses on core functionalities to validate the app's concept and gather user feedback.
 
-- [ ] **Driver being able to accept orders**
+- ⭕ **Driver being able to accept orders**
 
-🟡 [**Send notification to the closest driver**](https://github.com/marcodluz/HiDelivery/issues/3)
+- 🟡 [**Send notification to the closest driver**](https://github.com/marcodluz/HiDelivery/issues/3)
 
-- [x] Timer to accept the order
+  - ✅ Timer to accept the order
 
-- [ ] Send global announcement
+  - ⭕ Send global announcement
 
-🟡 [**Driver can view order**](https://github.com/marcodluz/HiDelivery/issues/4)
+- 🟡 [**Driver can view order**](https://github.com/marcodluz/HiDelivery/issues/4)
 
-- [x] Show order details
+  - ✅ Show order details
 
-- [ ] Create a route current location > store > customer address
+  - ⭕ Create a route current location > store > customer address
 
-  - [ ] Driver can view the stores that are opened around him
+  - ⭕ Driver can view the stores that are opened around him
 
-    - [ ] Show open and closing time
+    - ⭕ Show open and closing time
 
-    - [ ] Show distance
+    - ⭕ Show distance
 
-- [x] Driver can edit the quantity of items that has already picked up
+  - ✅ Driver can edit the quantity of items that has already picked up
 
-- [ ] Driver can complete the order using the customer's PIN code
+  - ⭕ Driver can complete the order using the customer's PIN code
 
-- [x] **Customer can select their address (using google maps)** (✅ [Started](https://github.com/marcodluz/HiDelivery/issues/4))
+- ✅ [**Customer can select their address (using google maps)**](https://github.com/marcodluz/HiDelivery/issues/4)
 
-  - [x] Use phone current location
+  - ✅ Use phone current location
 
-- [ ] **Customer can create an order**
+- ⭕ **Customer can create an order**
 
-  - [ ] Add items
+  - ⭕ Add items
 
-  - [ ] Pay the order
+  - ⭕ Pay the order
 
-  - [ ] Contact driver
+  - ⭕ Contact driver
 
-  - [ ] Contact support
+  - ⭕ Contact support
 
-  - [ ] Cancel order before being accepted by a driver
+  - ⭕ Cancel order before being accepted by a driver
 
-- [ ] **Customer can see ongoing order**
+- ⭕ **Customer can see ongoing order**
 
-  - [ ] Show order details
+  - ⭕ Show order details
 
-  - [ ] Show PIN code in big
+  - ⭕ Show PIN code in big
 
-- [ ] **Customer can browse items**
+- ⭕ **Customer can browse items**
 
-  - [ ] Have categories
+  - ⭕ Have categories
 
-- [ ] **Integrate database**
+- ⭕ **Integrate database**
 
-  - [ ] Firebase authentication
+  - ⭕ Firebase authentication
 
-  - [ ] Firebase storage
+  - ⭕ Firebase storage
 
-  - [ ] Firebase real-time
+  - ⭕ Firebase real-time
 
 See the [open issues](https://github.com/marcodluz/HiDelivery/issues) for a full list of proposed features (and known issues).
 
