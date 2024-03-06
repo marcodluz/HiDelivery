@@ -184,7 +184,7 @@ The MVP focuses on core functionalities to validate the app's concept and gather
 
 - [ ] **Driver being able to accept orders**
 
-- [ ] **Send notification to the closest driver** 🟡 [Started](https://github.com/marcodluz/HiDelivery/issues/3)
+- [ ] **Send notification to the closest driver** (🟡 [Started](https://github.com/marcodluz/HiDelivery/issues/3))
 
   - [x] Timer to accept the order
 
