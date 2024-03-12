@@ -1,12 +1,13 @@
 import React from "react";
-import { Text, TouchableOpacity, View, Image } from "react-native";
+import { Text, TouchableOpacity, View, Image, FlatList } from "react-native";
 import * as Database from "@/app/services/database";
+import { useItems } from "@/app/services/useItems";
+import RenderItem from "@/app/components/RenderItem/RenderItem";
 
 const order = {
   distance: "18.3",
   time: "02:05",
   price: "25.89",
-  //orderTime: Date.parse("2024-02-06T23:42:00.000Z"),
   orderTime: Date.now(),
   accepted: false,
   items: [
@@ -20,9 +21,19 @@ const order = {
   ],
 };
 
+const item = {
+  title: "Pineapple",
+  image:
+    "https://firebasestorage.googleapis.com/v0/b/hidelivery-prod.appspot.com/o/images%2Fitems%2Fpineapple.jpg?alt=media&token=bacdb8a9-b1a8-443b-8518-a127d2956856",
+  minPrice: 2.5,
+  maxPrice: 5.0,
+};
+
 const Home = () => {
+  const itemsList = useItems();
+
   return (
-    <View className="flex-1 items-center bg-white">
+    <View className="bg-white h-full">
       <TouchableOpacity
         className="py-2 items-center"
         onPress={() => Database.createOrder(order)}
@@ -37,6 +48,19 @@ const Home = () => {
       >
         <Text className="text-black font-semibold text-lg">Get an Order</Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        className="py-2 items-center"
+        onPress={() => Database.createItem(item)}
+      >
+        <Text className="text-black font-semibold text-lg">Create an Item</Text>
+      </TouchableOpacity>
+      <View className="px-5">
+        <FlatList
+          data={itemsList}
+          numColumns={3}
+          renderItem={({ item }) => <RenderItem item={item} />}
+        />
+      </View>
     </View>
   );
 };

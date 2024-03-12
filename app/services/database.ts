@@ -15,6 +15,7 @@ import {
 } from "firebase/database";
 import { db } from "@/firebase";
 import { IOrder } from "@/app/interfaces/IOrder";
+import { IItem } from "../interfaces/IItem";
 
 interface OrderData extends IOrder {
   [key: string]: any; // Allow any property name
@@ -79,5 +80,29 @@ export function getListOrders(startTime: number, endTime: number) {
     const ordersList = Object.values(data);
     console.log(ordersList);
     return ordersList;
+  });
+}
+
+export function createItem(createData: IItem) {
+  const randomUniqueKey = push(child(ref(db), "item")).key;
+  const itemRef = ref(db, "item/" + randomUniqueKey);
+
+  set(itemRef, createData)
+    .then(() => {
+      alert("Data submitted");
+    })
+    .catch((error) => {
+      alert(error);
+    });
+}
+
+export function getListItems() {
+  const itemRef = query(ref(db, "item/"), orderByChild("title"));
+
+  onValue(itemRef, (snapshot) => {
+    const data = snapshot.val() || [];
+    const itemsList = Object.values(data);
+    console.log(itemsList);
+    return itemsList;
   });
 }
