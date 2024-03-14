@@ -230,7 +230,7 @@ The MVP focuses on core functionalities to validate the app's concept and gather
 
   - ⭕ Show PIN code in big
 
-- ⭕ [**Customer can browse items**](https://github.com/marcodluz/HiDelivery/issues/7)
+- 🟡 [**Customer can browse items**](https://github.com/marcodluz/HiDelivery/issues/7)
 
   - ⭕ Have categories
 
@@ -238,7 +238,7 @@ The MVP focuses on core functionalities to validate the app's concept and gather
 
   - ⭕ Firebase authentication
 
-  - ⭕ Firebase storage
+  - ✅ Firebase storage
 
   - ✅ Firebase real-time
 
