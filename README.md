@@ -11,7 +11,7 @@
 <br  />
 <div align="center">
 <a  href="https://github.com/marcodluz/Reciply">
-<img  src="https://firebasestorage.googleapis.com/v0/b/hidelivery-prod.appspot.com/o/images%2Fpackage.png?alt=media&token=386fc55f-cd0a-4f26-91f9-7e1cb21428eb"  alt="HiDelivery"  width="80"  height="80">
+<img  src="https://firebasestorage.googleapis.com/v0/b/hidelivery-prod.appspot.com/o/images%2FHiDelivery-Logo.png?alt=media&token=84b73bd3-4d73-4571-96ab-ba7f41554485"  alt="HiDelivery"  width="80"  height="80">
 </a>
 
 <h3  align="center">HiDelivery</h3>
