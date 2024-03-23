@@ -2,7 +2,7 @@ import React from "react";
 import { Text, TouchableOpacity, View, Image, FlatList } from "react-native";
 import * as Database from "@/app/services/database";
 import { useItems } from "@/app/services/useItems";
-import RenderItem from "@/app/components/RenderItem/RenderItem";
+import Item from "@/app/components/Item/Item";
 
 const order = {
   distance: "18.3",
@@ -58,7 +58,7 @@ const Home = () => {
         <FlatList
           data={itemsList}
           numColumns={3}
-          renderItem={({ item }) => <RenderItem item={item} />}
+          renderItem={({ item }) => <Item item={item} />}
         />
       </View>
     </View>

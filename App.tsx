@@ -1,10 +1,10 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Welcome from "@/app/screens/Public/Welcome/Welcome";
+import Welcome from "@/app/screens/Customer/Welcome/Welcome";
 import Login from "@/app/screens/Auth/Login/Login";
-import Home from "@/app/screens/Public/Home/Home";
-import SelectAddress from "@/app/screens/Public/SelectAddress/SelectAddress";
+import Home from "@/app/screens/Customer/Home/Home";
+import SelectAddress from "@/app/screens/Customer/SelectAddress/SelectAddress";
 import { AddressProvider } from "@/app/context/AddressContext";
 import Orders from "@/app/screens/Driver/Orders/Orders";
 import ViewOrder from "@/app/screens/Driver/ViewOrder/ViewOrder";
@@ -30,6 +30,18 @@ const App = () => {
               options={{ title: "Welcome" }}
             />
             <Stack.Screen
+              name="Login"
+              component={Login}
+              options={{
+                title: "Login",
+                headerShown: true,
+                headerTintColor: "black",
+                headerStyle: {
+                  backgroundColor: "white",
+                },
+              }}
+            />
+            <Stack.Screen
               name="Home"
               component={Home}
               options={{
@@ -40,11 +52,6 @@ const App = () => {
                   backgroundColor: "white",
                 },
               }}
-            />
-            <Stack.Screen
-              name="Login"
-              component={Login}
-              options={{ title: "Login" }}
             />
             <Stack.Screen
               name="Customer - Select Address"

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import { FontAwesome5 } from "@expo/vector-icons";
+import { FontAwesome6 } from "@expo/vector-icons";
 import AnimatedButton from "@/app/components/AnimatedButton/AnimatedButton";
 import { useNavigation } from "@react-navigation/native";
 import { IOrder } from "@/app/interfaces/IOrder";
@@ -57,9 +57,9 @@ const RenderOrder = ({ order }: RenderOrderProps) => {
     <TouchableOpacity className="bg-white w-full rounded-2xl p-5 shadow-sm mt-5 flex justify-between">
       <View className="flex-row gap-3 h-32">
         <View className="justify-around">
-          <FontAwesome5 name="map-marker-alt" size={18} color="black" />
-          <FontAwesome5 name="shopping-bag" size={18} color="black" />
-          <FontAwesome5 name="bullhorn" size={18} color="black" />
+          <FontAwesome6 name="location-dot" size={18} color="black" />
+          <FontAwesome6 name="bag-shopping" size={18} color="black" />
+          <FontAwesome6 name="bullhorn" size={18} color="black" />
         </View>
         <View className="justify-around">
           <Text className="text-lg">
@@ -88,7 +88,7 @@ const RenderOrder = ({ order }: RenderOrderProps) => {
             }}
           >
             <Text className="text-white font-semibold text-2xl">
-              <FontAwesome5 name="box-open" size={22} color="white" />
+              <FontAwesome6 name="box-open" size={22} color="white" />
               {"  "}
               View Order
             </Text>

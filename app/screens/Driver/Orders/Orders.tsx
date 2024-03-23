@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, FlatList } from "react-native";
-import RenderOrder from "@/app/components/RenderOrder/RenderOrder";
+import RenderOrder from "@/app/components/Order/Order";
 import { useOrders } from "@/app/services/useOrders";
 
 const Orders = () => {

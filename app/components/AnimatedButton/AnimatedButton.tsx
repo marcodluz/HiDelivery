@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Animated, TouchableOpacity, Text } from "react-native";
-import { FontAwesome5 } from "@expo/vector-icons";
+import { FontAwesome6 } from "@expo/vector-icons";
 
 interface AnimatedButtonProps {
   label: string;
@@ -60,7 +60,7 @@ const AnimatedButton = (props: AnimatedButtonProps) => {
           style={{ width: animation }}
         />
         <Text className="text-white font-semibold text-2xl">
-          <FontAwesome5 name="check-circle" size={22} color="white" />
+          <FontAwesome6 name="circle-check" size={22} color="white" />
           {"  "}
           {props.label}
         </Text>
