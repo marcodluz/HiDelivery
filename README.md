@@ -234,6 +234,14 @@ The MVP focuses on core functionalities to validate the app's concept and gather
 
   - ⭕ Have categories
 
+- ⭕ Authentication
+
+  - ⭕ Login
+
+  - ⭕ Create Account
+
+  - ⭕ Recover Password
+
 - 🟡 [**Integrate database**](https://github.com/marcodluz/HiDelivery/issues/8)
 
   - ⭕ Firebase authentication

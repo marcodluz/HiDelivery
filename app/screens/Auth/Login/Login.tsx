@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import { Text, TextInput, View } from "react-native";
+import * as React from "react";
+import { Text, View } from "react-native";
+import TextField from "@mui/material/TextField";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = React.useState("");
 
   return (
     <View className="flex-1 items-center bg-white px-9">
