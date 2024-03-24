@@ -234,9 +234,9 @@ The MVP focuses on core functionalities to validate the app's concept and gather
 
   - ⭕ Have categories
 
-- ⭕ Authentication
+- 🟡 Authentication
 
-  - ⭕ Login
+  - 🟡 Login
 
   - ⭕ Create Account
 
