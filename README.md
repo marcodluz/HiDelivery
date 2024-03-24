@@ -178,77 +178,7 @@ To get a local copy up and running follow these next steps.
 
 ## Roadmap
 
-**✅ Completed | 🟡 Started | ⭕ Not Started**
-
-### MVP (Minimum Viable Product)
-
-The MVP focuses on core functionalities to validate the app's concept and gather user feedback.
-
-- ⭕ **Driver being able to accept orders**
-
-- 🟡 [**Send notification to the closest driver**](https://github.com/marcodluz/HiDelivery/issues/3)
-
-  - ✅ Timer to accept the order
-
-  - ⭕ Send global announcement
-
-- 🟡 [**Driver can view order**](https://github.com/marcodluz/HiDelivery/issues/4)
-
-  - ✅ Show order details
-
-  - ⭕ Create a route current location > store > customer address
-
-  - ⭕ Driver can view the stores that are opened around him
-
-    - ⭕ Show open and closing time
-
-    - ⭕ Show distance
-
-  - ✅ Driver can edit the quantity of items that has already picked up
-
-  - ⭕ Driver can complete the order using the customer's PIN code
-
-- ✅ [**Customer can select their address (using google maps)**](https://github.com/marcodluz/HiDelivery/issues/4)
-
-  - ✅ Use phone current location
-
-- ⭕ [**Customer can create an order**](https://github.com/marcodluz/HiDelivery/issues/5)
-
-  - ⭕ Add items
-
-  - ⭕ Pay the order
-
-  - ⭕ Contact driver
-
-  - ⭕ Contact support
-
-  - ⭕ Cancel order before being accepted by a driver
-
-- ⭕ [**Customer can see ongoing order**](https://github.com/marcodluz/HiDelivery/issues/6)
-
-  - ⭕ Show order details
-
-  - ⭕ Show PIN code in big
-
-- 🟡 [**Customer can browse items**](https://github.com/marcodluz/HiDelivery/issues/7)
-
-  - ⭕ Have categories
-
-- 🟡 Authentication
-
-  - 🟡 Login
-
-  - ⭕ Create Account
-
-  - ⭕ Recover Password
-
-- 🟡 [**Integrate database**](https://github.com/marcodluz/HiDelivery/issues/8)
-
-  - ⭕ Firebase authentication
-
-  - ✅ Firebase storage
-
-  - ✅ Firebase real-time
+- MVP
 
 See the [open issues](https://github.com/marcodluz/HiDelivery/issues) for a full list of proposed features (and known issues).
 
