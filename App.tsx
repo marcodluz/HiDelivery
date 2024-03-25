@@ -9,6 +9,7 @@ import { AddressProvider } from "@/app/context/AddressContext";
 import Orders from "@/app/screens/Driver/Orders/Orders";
 import ViewOrder from "@/app/screens/Driver/ViewOrder/ViewOrder";
 import { OrderProvider } from "@/app/context/OrderContext";
+import CreateAccount from "./app/screens/Auth/CreateAccount/CreateAccount";
 
 const Stack = createNativeStackNavigator();
 
@@ -34,6 +35,18 @@ const App = () => {
               component={Login}
               options={{
                 title: "Login",
+                headerShown: true,
+                headerTintColor: "black",
+                headerStyle: {
+                  backgroundColor: "white",
+                },
+              }}
+            />
+            <Stack.Screen
+              name="Create Account"
+              component={CreateAccount}
+              options={{
+                title: "Create Account",
                 headerShown: true,
                 headerTintColor: "black",
                 headerStyle: {

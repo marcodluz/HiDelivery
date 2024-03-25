@@ -1,9 +1,18 @@
 import * as React from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { FontAwesome6 } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+import { useAuthentication } from "@/app/services/useAuthentication";
 
 const Login = () => {
+  const navigation = useNavigation();
   const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const { signIn } = useAuthentication();
+
+  const handleSignIn = async () => {
+    await signIn(email, password);
+  };
 
   return (
     <View className="flex-1 items-center bg-white px-9">
@@ -27,9 +36,25 @@ const Login = () => {
           returnKeyType="next"
           autoCapitalize="none"
           maxLength={254}
+          value={email}
+          onChangeText={setEmail}
+        />
+        <TextInput
+          className="border border-slate-200 px-4 py-5 mt-3 rounded-xl"
+          placeholder="Password"
+          keyboardType="default"
+          inputMode="text"
+          textContentType="newPassword"
+          autoComplete="new-password"
+          clearButtonMode="while-editing"
+          returnKeyType="next"
+          autoCapitalize="none"
+          secureTextEntry
+          value={password}
+          onChangeText={setPassword}
         />
         <TouchableOpacity
-          onPress={() => {}}
+          onPress={handleSignIn}
           className="h-14 mt-5 bg-sky-950 rounded-xl items-center w-full overflow-hidden justify-center"
         >
           <Text className="text-white font-normal text-lg">Continue</Text>
@@ -67,6 +92,12 @@ const Login = () => {
           </Text>
         </TouchableOpacity>
       </View>
+      <TouchableOpacity
+        className="py-7 items-center"
+        onPress={() => navigation.navigate("Create Account")}
+      >
+        <Text className="text-black font-normal text-xl">Create account</Text>
+      </TouchableOpacity>
     </View>
   );
 };
