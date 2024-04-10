@@ -3,6 +3,8 @@ import { Text, TouchableOpacity, View, Image, FlatList } from "react-native";
 import * as Database from "@/app/services/database";
 import { useItems } from "@/app/services/useItems";
 import Item from "@/app/components/Item/Item";
+import { useAuth } from "@/app/context/AuthContext";
+import { useNavigation } from "@react-navigation/native";
 
 const order = {
   distance: "18.3",
@@ -31,6 +33,18 @@ const item = {
 
 const Home = () => {
   const itemsList = useItems();
+  const navigation = useNavigation();
+  const { user, userSignOut } = useAuth();
+
+  React.useEffect(() => {
+    if (!user) {
+      navigation.navigate("Login");
+    }
+  }, []);
+
+  const handleSignOut = async () => {
+    await userSignOut();
+  };
 
   return (
     <View className="bg-white h-full">
@@ -61,6 +75,15 @@ const Home = () => {
           renderItem={({ item }) => <Item item={item} />}
         />
       </View>
+      <TouchableOpacity
+        className="h-14 mt-5 bg-rose-600 rounded-full w-full overflow-hidden justify-center items-center"
+        onPress={handleSignOut}
+      >
+        <Text className="text-white font-semibold text-2xl">
+          {"  "}
+          Logout
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };
