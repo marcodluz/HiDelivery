@@ -43,7 +43,7 @@ const Login = () => {
           <View className="w-full justify-between pt-16">
             <View>
               <Text className="text-4xl font-bold">Let's get into to it.</Text>
-              <Text className="text-4xl font-normal">
+              <Text className="text-3xl font-normal">
                 Welcome back.{"\n"}You've been missed!
               </Text>
             </View>
@@ -120,8 +120,16 @@ const Login = () => {
             className="py-7 items-center"
             onPress={() => navigation.navigate("Create Account")}
           >
-            <Text className="text-black font-normal text-xl">
-              Create account
+            <Text className="text-black font-semibold text-xl">
+              Create new account
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            className="items-center"
+            onPress={() => navigation.navigate("Reset Password")}
+          >
+            <Text className="text-black font-normal text-base">
+              Reset password
             </Text>
           </TouchableOpacity>
         </>

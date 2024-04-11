@@ -11,6 +11,8 @@ import ViewOrder from "@/app/screens/Driver/ViewOrder/ViewOrder";
 import { OrderProvider } from "@/app/context/OrderContext";
 import CreateAccount from "@/app/screens/Auth/CreateAccount/CreateAccount";
 import { AuthProvider } from "@/app/context/AuthContext";
+import ResetPassword from "@/app/screens/Auth/ResetPassword/ResetPassword";
+import ResetConfirmation from "@/app/screens/Auth/ResetPassword/ResetConfirmation";
 
 const Stack = createNativeStackNavigator();
 
@@ -50,6 +52,30 @@ const App = () => {
                 component={CreateAccount}
                 options={{
                   title: "Create Account",
+                  headerShown: true,
+                  headerTintColor: "black",
+                  headerStyle: {
+                    backgroundColor: "white",
+                  },
+                }}
+              />
+              <Stack.Screen
+                name="Reset Password"
+                component={ResetPassword}
+                options={{
+                  title: "Reset Password",
+                  headerShown: true,
+                  headerTintColor: "black",
+                  headerStyle: {
+                    backgroundColor: "white",
+                  },
+                }}
+              />
+              <Stack.Screen
+                name="Reset Confirmation"
+                component={ResetConfirmation}
+                options={{
+                  title: "Reset Confirmation",
                   headerShown: true,
                   headerTintColor: "black",
                   headerStyle: {
