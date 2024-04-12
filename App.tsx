@@ -14,7 +14,22 @@ import { AuthProvider } from "@/app/context/AuthContext";
 import ResetPassword from "@/app/screens/Auth/ResetPassword/ResetPassword";
 import ResetConfirmation from "@/app/screens/Auth/ResetPassword/ResetConfirmation";
 
-const Stack = createNativeStackNavigator();
+export type RootStackParamList = {
+  Welcome: undefined;
+  Login: undefined;
+  "Create Account": undefined;
+  "Reset Password": undefined;
+  "Reset Confirmation": undefined;
+  Home: undefined;
+  "Customer - Select Address": undefined;
+  "Driver Dashboard": undefined;
+  "Driver Dashboard - Order": undefined;
+  // Profile: { userId: string };
+  // Feed: { sort: 'latest' | 'top' } | undefined;
+  // How to use this: https://stackoverflow.com/questions/68779417/navigation-navigatehome-showing-some-error-in-typescript
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const App = () => {
   return (
