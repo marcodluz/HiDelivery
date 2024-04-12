@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
-import * as Database from "@/app/services/database";
 
 interface QuantityChangerProps {
   maxQuantity: number;

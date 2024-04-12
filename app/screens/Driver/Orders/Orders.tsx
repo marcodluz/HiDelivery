@@ -4,7 +4,6 @@ import RenderOrder from "@/app/components/Order/Order";
 import { useOrders } from "@/app/services/useOrders";
 import { useNavigation } from "@react-navigation/native";
 import { useAuth } from "@/app/context/AuthContext";
-import { FontAwesome6 } from "@expo/vector-icons";
 
 const Orders = () => {
   const [startTime, setStartTime] = useState(1709745048421);
