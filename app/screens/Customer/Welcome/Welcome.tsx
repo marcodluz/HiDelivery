@@ -1,7 +1,16 @@
+import { useAuth } from "@/app/context/AuthContext";
 import React from "react";
 import { Text, TouchableOpacity, View, Image } from "react-native";
 
 const Welcome = ({ navigation }: any) => {
+  // const { user } = useAuth();
+
+  // React.useEffect(() => {
+  //   if (user) {
+  //     navigation.navigate("Home");
+  //   }
+  // }, []);
+
   return (
     <View className="flex-1 justify-between items-center bg-white">
       <View className="w-full items-center justify-center h-1/2 bg-sky-200">

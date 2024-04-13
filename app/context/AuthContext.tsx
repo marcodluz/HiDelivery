@@ -5,12 +5,15 @@ import {
   onAuthStateChanged,
   signOut,
   sendPasswordResetEmail,
+  setPersistence,
+  browserLocalPersistence,
+  User,
 } from "@firebase/auth";
 import { auth } from "@/firebase";
 import { useNavigation } from "@react-navigation/native";
 
 type AuthContextType = {
-  user: any;
+  user: User | undefined;
   isLoading: boolean;
   createAccount: (email: string, password: string) => {};
   userSignIn: (email: string, password: string) => {};
@@ -34,7 +37,7 @@ type AuthProviderProps = {
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const navigation = useNavigation();
-  const [user, setUser] = React.useState("");
+  const [user, setUser] = React.useState<User>();
   const [isLoading, setIsLoading] = useState(true);
 
   React.useEffect(() => {
@@ -50,6 +53,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   }, [auth]);
 
   const createAccount = async (email: string, password: string) => {
+    setIsLoading(true);
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       await signInWithEmailAndPassword(auth, email, password);
@@ -57,35 +61,47 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       console.log("User created successfully!", email);
     } catch (error: any) {
       console.error("Authentication error:", error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const userSignIn = async (email: string, password: string) => {
+    setIsLoading(true);
     try {
+      setPersistence(auth, browserLocalPersistence);
       await signInWithEmailAndPassword(auth, email, password);
       console.log("User signed in successfully!", auth.currentUser?.email);
       navigation.navigate("Home");
     } catch (error: any) {
       console.error("Authentication error:", error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const userSignOut = async () => {
+    setIsLoading(true);
     try {
       await signOut(auth);
       console.log("User logged out successfully!", auth.currentUser?.email);
       navigation.navigate("Welcome");
     } catch (error: any) {
       console.error("Error signing out:", error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const userResetPassword = async (email: string) => {
+    setIsLoading(true);
     try {
       await sendPasswordResetEmail(auth, email);
       console.log("Password reset email sent successfully!", email);
     } catch (error: any) {
       console.error("Error sending password reset email:", error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
