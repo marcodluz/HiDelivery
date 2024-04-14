@@ -46,11 +46,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
       if (!user) {
         navigation.navigate("Welcome");
+      } else {
+        navigation.navigate("Home");
       }
     });
 
     return () => syncUserState();
-  }, [auth]);
+  }, []);
 
   const createAccount = async (email: string, password: string) => {
     setIsLoading(true);
@@ -68,8 +70,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const userSignIn = async (email: string, password: string) => {
     setIsLoading(true);
+    setPersistence(auth, browserLocalPersistence);
     try {
-      setPersistence(auth, browserLocalPersistence);
       await signInWithEmailAndPassword(auth, email, password);
       console.log("User signed in successfully!", auth.currentUser?.email);
       navigation.navigate("Home");
