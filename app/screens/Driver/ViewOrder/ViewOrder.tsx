@@ -47,7 +47,10 @@ const ViewOrder = () => {
                 <Text className="font-bold text-xl">
                   £{item.minPrice} - £{item.maxPrice}
                 </Text>
-                <QuantityChanger maxQuantity={item.quantity} />
+                <QuantityChanger
+                  maxQuantity={item.quantity}
+                  type={"combined"}
+                />
               </View>
             </View>
           ))}
