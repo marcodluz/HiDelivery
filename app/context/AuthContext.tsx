@@ -47,7 +47,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       if (!user) {
         navigation.navigate("Welcome");
       } else {
-        navigation.navigate("Home");
+        navigation.navigate("Customer");
       }
     });
 
@@ -59,7 +59,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       await signInWithEmailAndPassword(auth, email, password);
-      navigation.navigate("Home");
+      navigation.navigate("Customer");
       console.log("User created successfully!", email);
     } catch (error: any) {
       console.error("Authentication error:", error.message);
@@ -74,7 +74,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       console.log("User signed in successfully!", auth.currentUser?.email);
-      navigation.navigate("Home");
+      navigation.navigate("Customer");
     } catch (error: any) {
       console.error("Authentication error:", error.message);
     } finally {

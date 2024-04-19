@@ -13,6 +13,7 @@ import CreateAccount from "@/app/screens/Auth/CreateAccount/CreateAccount";
 import { AuthProvider } from "@/app/context/AuthContext";
 import ResetPassword from "@/app/screens/Auth/ResetPassword/ResetPassword";
 import ResetConfirmation from "@/app/screens/Auth/ResetPassword/ResetConfirmation";
+import CustomerNavigation from "./app/screens/Customer/CustomerNavigation";
 
 export type RootStackParamList = {
   Welcome: undefined;
@@ -20,6 +21,7 @@ export type RootStackParamList = {
   "Create Account": undefined;
   "Reset Password": undefined;
   "Reset Confirmation": undefined;
+  Customer: undefined;
   Home: undefined;
   "Customer - Select Address": undefined;
   "Driver Dashboard": undefined;
@@ -98,6 +100,7 @@ const App = () => {
                   },
                 }}
               />
+              <Stack.Screen name="Customer" component={CustomerNavigation} />
               <Stack.Screen
                 name="Home"
                 component={Home}
