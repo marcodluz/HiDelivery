@@ -33,26 +33,26 @@ const Account = () => {
   };
 
   return (
-    <View>
+    <View className="px-5 h-full bg-white flex-col justify-between py-4">
       <Text className="text-2xl font-semibold">{user?.email}</Text>
-      <TouchableOpacity
-        className="h-14 mt-5 bg-rose-600 rounded-full w-full overflow-hidden justify-center items-center"
-        onPress={handleDeleteAccount}
-      >
-        <Text className="text-white font-semibold text-2xl">
+      <View className="">
+        <TouchableOpacity
+          className="h-14 mt-5 bg-rose-600 rounded-full w-full overflow-hidden justify-center items-center"
+          onPress={handleSignOut}
+        >
+          <Text className="text-white font-semibold text-2xl">
+            {"  "}
+            Logout
+          </Text>
+        </TouchableOpacity>
+        <Text
+          className="text-rose-600 font-semibold text-base text-center mt-5"
+          onPress={handleDeleteAccount}
+        >
           {"  "}
           Delete Account
         </Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        className="h-14 mt-5 bg-rose-600 rounded-full w-full overflow-hidden justify-center items-center"
-        onPress={handleSignOut}
-      >
-        <Text className="text-white font-semibold text-2xl">
-          {"  "}
-          Logout
-        </Text>
-      </TouchableOpacity>
+      </View>
     </View>
   );
 };
