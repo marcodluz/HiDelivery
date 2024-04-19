@@ -19,6 +19,7 @@ type AuthContextType = {
   userSignIn: (email: string, password: string) => {};
   userSignOut: () => {};
   userResetPassword: (email: string) => {};
+  userDeleteAccount: () => {};
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -107,6 +108,19 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
+  const userDeleteAccount = async () => {
+    setIsLoading(true);
+    try {
+      await user?.delete();
+      console.log("User account deleted successfully!");
+      navigation.navigate("Welcome");
+    } catch (error: any) {
+      console.error("Error deleting user account:", error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -116,6 +130,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         userSignIn,
         userSignOut,
         userResetPassword,
+        userDeleteAccount,
       }}
     >
       {children}
