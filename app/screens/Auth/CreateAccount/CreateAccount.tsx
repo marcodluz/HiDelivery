@@ -1,5 +1,11 @@
 import * as React from "react";
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import {
+  KeyboardAvoidingView,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { useAuth } from "@/app/context/AuthContext";
 import { useNavigation } from "@react-navigation/native";
 import { FontAwesome6 } from "@expo/vector-icons";
@@ -7,6 +13,9 @@ import { FontAwesome6 } from "@expo/vector-icons";
 const CreateAccount = () => {
   const navigation = useNavigation();
   const [email, setEmail] = React.useState("");
+  const [firstName, setFirstName] = React.useState("");
+  const [lastName, setLastName] = React.useState("");
+  const [mobileNumber, setMobileNumber] = React.useState("");
   const [password, setPassword] = React.useState("");
   const { createAccount, user } = useAuth();
 
@@ -36,17 +45,9 @@ const CreateAccount = () => {
   };
 
   return (
-    <View className="flex-1 items-center bg-white px-9">
-      <View className="w-full justify-between pt-16">
-        <View>
-          <Text className="text-4xl font-bold">Welcome new face.</Text>
-          <Text className="text-3xl font-normal">
-            Already craving?{"\n"}You won't regret it!
-          </Text>
-        </View>
-      </View>
+    <KeyboardAvoidingView className="flex-1 items-center bg-white px-9">
       <View className="w-full mt-14 mb-5">
-        <TextInput
+        {/* <TextInput
           className="border border-slate-200 px-4 py-5 rounded-xl"
           placeholder="Email Address"
           keyboardType="email-address"
@@ -59,6 +60,48 @@ const CreateAccount = () => {
           maxLength={254}
           value={email}
           onChangeText={setEmail}
+        /> */}
+        <TextInput
+          className="border border-slate-200 px-4 py-5 mt-3 rounded-xl"
+          placeholder="First Name"
+          keyboardType="default"
+          inputMode="text"
+          textContentType="givenName"
+          autoComplete="given-name"
+          clearButtonMode="while-editing"
+          returnKeyType="next"
+          autoCapitalize="words"
+          maxLength={50}
+          value={firstName}
+          onChangeText={setFirstName}
+        />
+        <TextInput
+          className="border border-slate-200 px-4 py-5 mt-3 rounded-xl"
+          placeholder="Last Name"
+          keyboardType="default"
+          inputMode="text"
+          textContentType="familyName"
+          autoComplete="family-name"
+          clearButtonMode="while-editing"
+          returnKeyType="next"
+          autoCapitalize="words"
+          maxLength={50}
+          value={lastName}
+          onChangeText={setLastName}
+        />
+        <TextInput
+          className="border border-slate-200 px-4 py-5 mt-3 rounded-xl"
+          placeholder="Mobile number"
+          keyboardType="phone-pad"
+          inputMode="tel"
+          textContentType="telephoneNumber"
+          autoComplete="tel"
+          clearButtonMode="while-editing"
+          returnKeyType="next"
+          autoCapitalize="none"
+          maxLength={15}
+          value={mobileNumber}
+          onChangeText={setMobileNumber}
         />
         <TextInput
           className="border border-slate-200 px-4 py-5 mt-3 rounded-xl"
@@ -81,7 +124,7 @@ const CreateAccount = () => {
           <Text className="text-white font-normal text-lg">Sign up</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 

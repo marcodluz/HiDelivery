@@ -57,7 +57,7 @@ const App = () => {
                 component={Login}
                 options={{
                   title: "Login",
-                  headerShown: true,
+                  headerShown: false,
                   headerTintColor: "black",
                   headerStyle: {
                     backgroundColor: "white",
@@ -69,7 +69,7 @@ const App = () => {
                 component={CreateAccount}
                 options={{
                   title: "Create Account",
-                  headerShown: true,
+                  headerShown: false,
                   headerTintColor: "black",
                   headerStyle: {
                     backgroundColor: "white",
@@ -81,7 +81,7 @@ const App = () => {
                 component={ResetPassword}
                 options={{
                   title: "Reset Password",
-                  headerShown: true,
+                  headerShown: false,
                   headerTintColor: "black",
                   headerStyle: {
                     backgroundColor: "white",
