@@ -4,6 +4,7 @@ import { FontAwesome6 } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 //import { useAuthentication } from "@/app/services/useAuthentication";
 import { useAuth } from "@/app/context/AuthContext";
+import useNavigationController from "@/app/services/useNavigationController";
 
 const Login = () => {
   const navigation = useNavigation();
@@ -11,26 +12,7 @@ const Login = () => {
   const [password, setPassword] = React.useState("");
   const { userSignIn, user } = useAuth();
 
-  React.useEffect(() => {
-    if (user) {
-      navigation.navigate("Home");
-    } else {
-      if (!user && navigation.canGoBack()) {
-        navigation.setOptions({
-          headerLeft: () => (
-            <FontAwesome6
-              name="chevron-left"
-              size={22}
-              color="black"
-              onPress={() => {
-                navigation.navigate("Welcome");
-              }}
-            />
-          ),
-        });
-      }
-    }
-  }, []);
+  useNavigationController(user, "Welcome");
 
   const handleSignIn = async () => {
     await userSignIn(email, password);

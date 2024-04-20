@@ -7,11 +7,9 @@ import {
   View,
 } from "react-native";
 import { useAuth } from "@/app/context/AuthContext";
-import { useNavigation } from "@react-navigation/native";
-import { FontAwesome6 } from "@expo/vector-icons";
+import useNavigationController from "@/app/services/useNavigationController";
 
 const CreateAccount = () => {
-  const navigation = useNavigation();
   const [email, setEmail] = React.useState("");
   const [firstName, setFirstName] = React.useState("");
   const [lastName, setLastName] = React.useState("");
@@ -19,26 +17,7 @@ const CreateAccount = () => {
   const [password, setPassword] = React.useState("");
   const { createAccount, user } = useAuth();
 
-  React.useEffect(() => {
-    if (user) {
-      navigation.navigate("Home");
-    } else {
-      if (!user && navigation.canGoBack()) {
-        navigation.setOptions({
-          headerLeft: () => (
-            <FontAwesome6
-              name="chevron-left"
-              size={22}
-              color="black"
-              onPress={() => {
-                navigation.navigate("Login");
-              }}
-            />
-          ),
-        });
-      }
-    }
-  }, []);
+  useNavigationController(user, "Login");
 
   const handleCreateAccount = async () => {
     await createAccount(email, password);

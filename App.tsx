@@ -45,6 +45,7 @@ const App = () => {
                 headerShown: false,
                 gestureEnabled: false,
                 headerBackVisible: false,
+                headerShadowVisible: false,
               })}
             >
               <Stack.Screen
@@ -56,8 +57,8 @@ const App = () => {
                 name="Login"
                 component={Login}
                 options={{
-                  title: "Login",
-                  headerShown: false,
+                  title: "",
+                  headerShown: true,
                   headerTintColor: "black",
                   headerStyle: {
                     backgroundColor: "white",
@@ -68,8 +69,8 @@ const App = () => {
                 name="Create Account"
                 component={CreateAccount}
                 options={{
-                  title: "Create Account",
-                  headerShown: false,
+                  title: "",
+                  headerShown: true,
                   headerTintColor: "black",
                   headerStyle: {
                     backgroundColor: "white",
