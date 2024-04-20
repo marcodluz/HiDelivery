@@ -12,7 +12,7 @@ const Login = () => {
   const [password, setPassword] = React.useState("");
   const { userSignIn, user } = useAuth();
 
-  useNavigationController(user, "Welcome");
+  useNavigationController(user, "Get Started", true);
 
   const handleSignIn = async () => {
     await userSignIn(email, password);
@@ -22,15 +22,10 @@ const Login = () => {
     <View className="flex-1 items-center bg-white px-9">
       {!user && (
         <>
-          <View className="w-full justify-between pt-16">
-            <View>
-              <Text className="text-4xl font-bold">Let's get into to it.</Text>
-              <Text className="text-3xl font-normal">
-                Welcome back.{"\n"}You've been missed!
-              </Text>
-            </View>
-          </View>
-          <View className="w-full mt-14 mb-5">
+          <View className="w-full">
+            <Text className="text-3xl font-bold text-center mt-10 mb-5">
+              Let’s get into to it
+            </Text>
             <TextInput
               className="border border-slate-200 px-4 py-5 rounded-xl"
               placeholder="Email Address"
@@ -65,6 +60,17 @@ const Login = () => {
             >
               <Text className="text-white font-normal text-lg">Continue</Text>
             </TouchableOpacity>
+            <TouchableOpacity
+              className="items-center mt-5"
+              onPress={() => navigation.navigate("Reset Password")}
+            >
+              <Text className="text-black font-normal text-base">
+                Forgot your password?
+              </Text>
+            </TouchableOpacity>
+          </View>
+          <View className="w-full my-8">
+            <Text className="text-center">------------ or ------------</Text>
           </View>
           <View className="w-full gap-y-3">
             <TouchableOpacity
@@ -98,22 +104,6 @@ const Login = () => {
               </Text>
             </TouchableOpacity>
           </View>
-          <TouchableOpacity
-            className="py-7 items-center"
-            onPress={() => navigation.navigate("Create Account")}
-          >
-            <Text className="text-black font-semibold text-xl">
-              Create new account
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            className="items-center"
-            onPress={() => navigation.navigate("Reset Password")}
-          >
-            <Text className="text-black font-normal text-base">
-              Reset password
-            </Text>
-          </TouchableOpacity>
         </>
       )}
     </View>

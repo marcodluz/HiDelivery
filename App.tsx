@@ -1,22 +1,24 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Welcome from "@/app/screens/Customer/Welcome/Welcome";
-import Login from "@/app/screens/Auth/Login/Login";
+import Welcome from "@/app/screens/Public/Welcome/Welcome";
+import Login from "@/app/screens/Public/Login/Login";
 import Home from "@/app/screens/Customer/Home/Home";
 import SelectAddress from "@/app/screens/Customer/SelectAddress/SelectAddress";
 import { AddressProvider } from "@/app/context/AddressContext";
 import Orders from "@/app/screens/Driver/Orders/Orders";
 import ViewOrder from "@/app/screens/Driver/ViewOrder/ViewOrder";
 import { OrderProvider } from "@/app/context/OrderContext";
-import CreateAccount from "@/app/screens/Auth/CreateAccount/CreateAccount";
+import CreateAccount from "@/app/screens/Public/CreateAccount/CreateAccount";
 import { AuthProvider } from "@/app/context/AuthContext";
-import ResetPassword from "@/app/screens/Auth/ResetPassword/ResetPassword";
-import ResetConfirmation from "@/app/screens/Auth/ResetPassword/ResetConfirmation";
-import CustomerNavigation from "./app/screens/Customer/CustomerNavigation";
+import ResetPassword from "@/app/screens/Public/ResetPassword/ResetPassword";
+import ResetConfirmation from "@/app/screens/Public/ResetPassword/ResetConfirmation";
+import CustomerNavigation from "@/app/screens/Customer/CustomerNavigation";
+import GetStarted from "@/app/screens/Public/GetStarted/GetStarted";
 
 export type RootStackParamList = {
   Welcome: undefined;
+  "Get Started": undefined;
   Login: undefined;
   "Create Account": undefined;
   "Reset Password": undefined;
@@ -54,6 +56,18 @@ const App = () => {
                 options={{ title: "Welcome" }}
               />
               <Stack.Screen
+                name="Get Started"
+                component={GetStarted}
+                options={{
+                  title: "",
+                  headerShown: true,
+                  headerTintColor: "black",
+                  headerStyle: {
+                    backgroundColor: "white",
+                  },
+                }}
+              />
+              <Stack.Screen
                 name="Login"
                 component={Login}
                 options={{
@@ -81,8 +95,8 @@ const App = () => {
                 name="Reset Password"
                 component={ResetPassword}
                 options={{
-                  title: "Reset Password",
-                  headerShown: false,
+                  title: "",
+                  headerShown: true,
                   headerTintColor: "black",
                   headerStyle: {
                     backgroundColor: "white",
@@ -93,7 +107,7 @@ const App = () => {
                 name="Reset Confirmation"
                 component={ResetConfirmation}
                 options={{
-                  title: "Reset Confirmation",
+                  title: "",
                   headerShown: true,
                   headerTintColor: "black",
                   headerStyle: {

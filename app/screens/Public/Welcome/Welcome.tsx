@@ -23,7 +23,7 @@ const Welcome = ({ navigation }: any) => {
 
         <TouchableOpacity
           className="py-7 bg-sky-950 rounded-3xl items-center"
-          onPress={() => navigation.navigate("Login")}
+          onPress={() => navigation.navigate("Get Started")}
         >
           <Text className="text-white font-semibold text-2xl">Get Started</Text>
         </TouchableOpacity>

@@ -17,7 +17,7 @@ const CreateAccount = () => {
   const [password, setPassword] = React.useState("");
   const { createAccount, user } = useAuth();
 
-  useNavigationController(user, "Login");
+  useNavigationController(user, "Get Started", true);
 
   const handleCreateAccount = async () => {
     await createAccount(email, password);
@@ -25,7 +25,10 @@ const CreateAccount = () => {
 
   return (
     <KeyboardAvoidingView className="flex-1 items-center bg-white px-9">
-      <View className="w-full mt-14 mb-5">
+      <Text className="text-3xl font-bold text-center mt-10 mb-5">
+        Let's get started
+      </Text>
+      <View className="w-full mb-5">
         {/* <TextInput
           className="border border-slate-200 px-4 py-5 rounded-xl"
           placeholder="Email Address"
@@ -100,7 +103,7 @@ const CreateAccount = () => {
           onPress={handleCreateAccount}
           className="h-14 mt-5 bg-sky-950 rounded-xl items-center w-full overflow-hidden justify-center"
         >
-          <Text className="text-white font-normal text-lg">Sign up</Text>
+          <Text className="text-white font-normal text-lg">Create Account</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>

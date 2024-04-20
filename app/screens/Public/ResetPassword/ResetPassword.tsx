@@ -2,34 +2,14 @@ import * as React from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { useAuth } from "@/app/context/AuthContext";
 import { useNavigation } from "@react-navigation/native";
-import { FontAwesome6 } from "@expo/vector-icons";
+import useNavigationController from "@/app/services/useNavigationController";
 
 const ResetPassword = () => {
   const navigation = useNavigation();
   const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
   const { userResetPassword, user } = useAuth();
 
-  React.useEffect(() => {
-    if (user) {
-      navigation.navigate("Home");
-    } else {
-      if (!user && navigation.canGoBack()) {
-        navigation.setOptions({
-          headerLeft: () => (
-            <FontAwesome6
-              name="chevron-left"
-              size={22}
-              color="black"
-              onPress={() => {
-                navigation.navigate("Login");
-              }}
-            />
-          ),
-        });
-      }
-    }
-  }, []);
+  useNavigationController(user, "Get Started");
 
   const handlePasswordReset = async () => {
     await userResetPassword(email);

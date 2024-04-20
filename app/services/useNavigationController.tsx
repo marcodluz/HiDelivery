@@ -22,10 +22,10 @@ const useNavigationController = (
               onPress={() => {
                 navigation.navigate(backPage);
               }}
-              className="flex-row items-center"
+              className="flex-row items-center px-3 py-2"
             >
               <FontAwesome6 name="chevron-left" size={22} color="black" />
-              {suppressText && <Text className="ml-2">{backPage}</Text>}
+              {!suppressText && <Text className="ml-2">{backPage}</Text>}
             </TouchableOpacity>
           ),
         });

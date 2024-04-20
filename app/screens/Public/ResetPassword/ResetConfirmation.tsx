@@ -1,19 +1,14 @@
 import * as React from "react";
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import { useAuth } from "@/app/context/AuthContext";
 import { useNavigation } from "@react-navigation/native";
+import useNavigationController from "@/app/services/useNavigationController";
 
 const ResetConfirmation = () => {
   const navigation = useNavigation();
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const { userResetPassword, user } = useAuth();
+  const { user } = useAuth();
 
-  React.useEffect(() => {
-    if (user) {
-      navigation.navigate("Home");
-    }
-  }, []);
+  useNavigationController(user, "Get Started");
 
   return (
     <View className="flex-1 items-center bg-white px-9">
