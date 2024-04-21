@@ -7,6 +7,7 @@ import {
   sendPasswordResetEmail,
   setPersistence,
   browserLocalPersistence,
+  fetchSignInMethodsForEmail,
   User,
 } from "@firebase/auth";
 import { auth } from "@/firebase";
@@ -20,6 +21,7 @@ type AuthContextType = {
   userSignOut: () => {};
   userResetPassword: (email: string) => {};
   userDeleteAccount: () => {};
+  userEmailExists: (email: string) => {};
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -121,6 +123,16 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
+  const userEmailExists = async (email: string) => {
+    try {
+      const signInMethods = await fetchSignInMethodsForEmail(auth, email);
+      return signInMethods.length > 0;
+    } catch (error) {
+      console.error("Error checking email existence:", error);
+      return false;
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -131,6 +143,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         userSignOut,
         userResetPassword,
         userDeleteAccount,
+        userEmailExists,
       }}
     >
       {children}

@@ -15,22 +15,35 @@ const CreateAccount = () => {
   const [lastName, setLastName] = React.useState("");
   const [mobileNumber, setMobileNumber] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const { createAccount, user } = useAuth();
+  const [errorMessage, setErrorMessage] = React.useState("");
+  const { createAccount, userEmailExists, user } = useAuth();
 
   useNavigationController(user, "Get Started", true);
 
-  const handleCreateAccount = async () => {
-    await createAccount(email, password);
+  // const handleCreateAccount = async () => {
+  //   await createAccount(email, password);
+  // };
+
+  const handleVerify = async () => {
+    setErrorMessage(""); // Clear previous error message before checking
+    if (userEmailExists(email)) {
+      console.log("EMAIL EXISTS");
+      setErrorMessage("This email is already registered!");
+    } else {
+      console.log("EMAIL DOES NOT EXIST");
+    }
   };
 
   return (
     <KeyboardAvoidingView className="flex-1 items-center bg-white px-9">
       <Text className="text-3xl font-bold text-center mt-10 mb-5">
-        Let's get started
+        What's your email?
       </Text>
       <View className="w-full mb-5">
-        {/* <TextInput
-          className="border border-slate-200 px-4 py-5 rounded-xl"
+        <TextInput
+          className={`border border-slate-200 px-4 py-5 rounded-xl ${
+            errorMessage && "border-red-500"
+          }`}
           placeholder="Email Address"
           keyboardType="email-address"
           inputMode="email"
@@ -42,8 +55,12 @@ const CreateAccount = () => {
           maxLength={254}
           value={email}
           onChangeText={setEmail}
-        /> */}
-        <TextInput
+          onChange={() => setErrorMessage("")}
+        />
+        {errorMessage && (
+          <Text className="text-red-500 text-sm mt-2">{errorMessage}</Text>
+        )}
+        {/*<TextInput
           className="border border-slate-200 px-4 py-5 mt-3 rounded-xl"
           placeholder="First Name"
           keyboardType="default"
@@ -71,7 +88,7 @@ const CreateAccount = () => {
           value={lastName}
           onChangeText={setLastName}
         />
-        <TextInput
+         <TextInput
           className="border border-slate-200 px-4 py-5 mt-3 rounded-xl"
           placeholder="Mobile number"
           keyboardType="phone-pad"
@@ -98,12 +115,13 @@ const CreateAccount = () => {
           secureTextEntry
           value={password}
           onChangeText={setPassword}
-        />
+        /> */}
         <TouchableOpacity
-          onPress={handleCreateAccount}
+          // onPress={handleCreateAccount}
+          onPress={handleVerify}
           className="h-14 mt-5 bg-sky-950 rounded-xl items-center w-full overflow-hidden justify-center"
         >
-          <Text className="text-white font-normal text-lg">Create Account</Text>
+          <Text className="text-white font-normal text-lg">Verify</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
