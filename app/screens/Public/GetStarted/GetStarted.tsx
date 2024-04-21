@@ -28,7 +28,7 @@ const GetStarted = ({ navigation }: any) => {
         onPress={() => navigation.navigate("Login")}
         className="h-14 mt-5 bg-sky-950 rounded-xl items-center w-full overflow-hidden justify-center"
       >
-        <Text className="text-white font-normal text-lg">Login</Text>
+        <Text className="text-white font-semibold text-lg">Login</Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => navigation.navigate("Create Account")}
