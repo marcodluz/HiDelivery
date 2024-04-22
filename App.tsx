@@ -9,18 +9,20 @@ import { AddressProvider } from "@/app/context/AddressContext";
 import Orders from "@/app/screens/Driver/Orders/Orders";
 import ViewOrder from "@/app/screens/Driver/ViewOrder/ViewOrder";
 import { OrderProvider } from "@/app/context/OrderContext";
-import CreateAccount from "@/app/screens/Public/CreateAccount/CreateAccount";
+import CreateAccount from "@/app/screens/Public/CreateAccount";
 import { AuthProvider } from "@/app/context/AuthContext";
 import ResetPassword from "@/app/screens/Public/ResetPassword/ResetPassword";
 import ResetConfirmation from "@/app/screens/Public/ResetPassword/ResetConfirmation";
 import CustomerNavigation from "@/app/screens/Customer/CustomerNavigation";
 import GetStarted from "@/app/screens/Public/GetStarted/GetStarted";
+import VerifyEmailCode from "@/app/screens/Public/CreateAccount/VerifyEmailCode";
 
 export type RootStackParamList = {
   Welcome: undefined;
   "Get Started": undefined;
   Login: undefined;
-  "Create Account": undefined;
+  CreateAccount: undefined;
+  VerifyEmailCode: undefined;
   "Reset Password": undefined;
   "Reset Confirmation": undefined;
   Customer: undefined;
@@ -80,8 +82,20 @@ const App = () => {
                 }}
               />
               <Stack.Screen
-                name="Create Account"
+                name="CreateAccount"
                 component={CreateAccount}
+                options={{
+                  title: "",
+                  headerShown: true,
+                  headerTintColor: "black",
+                  headerStyle: {
+                    backgroundColor: "white",
+                  },
+                }}
+              />
+              <Stack.Screen
+                name="VerifyEmailCode"
+                component={VerifyEmailCode}
                 options={{
                   title: "",
                   headerShown: true,

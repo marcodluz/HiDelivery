@@ -31,7 +31,7 @@ const GetStarted = ({ navigation }: any) => {
         <Text className="text-white font-semibold text-lg">Login</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => navigation.navigate("Create Account")}
+        onPress={() => navigation.navigate("CreateAccount")}
         className="h-14 mt-5 border border-sky-950 rounded-xl items-center w-full overflow-hidden justify-center"
       >
         <Text className="text-sky-950 font-semibold text-lg">

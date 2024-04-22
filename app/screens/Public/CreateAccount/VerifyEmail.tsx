@@ -9,15 +9,17 @@ import {
 import { useAuth } from "@/app/context/AuthContext";
 import useNavigationController from "@/app/services/useNavigationController";
 import Input from "@/app/components/ui/dataEditors/input/Input";
+import { useNavigation } from "@react-navigation/native";
 
-const CreateAccount = () => {
+const VerifyEmail = () => {
   const [email, setEmail] = React.useState("");
   const [firstName, setFirstName] = React.useState("");
   const [lastName, setLastName] = React.useState("");
   const [mobileNumber, setMobileNumber] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [errorMessage, setErrorMessage] = React.useState("");
-  const { createAccount, userEmailExists, user } = useAuth();
+  const { createAccount, user } = useAuth();
+  const navigation = useNavigation();
 
   useNavigationController(user, "Get Started", true);
 
@@ -26,17 +28,41 @@ const CreateAccount = () => {
   // };
 
   const handleVerify = async () => {
-    setErrorMessage(""); // Clear previous error message before checking
-    if (userEmailExists(email)) {
-      console.log("EMAIL EXISTS");
+    // Clear previous error message before checking
+    setErrorMessage("");
+
+    // Check if email is empty before proceeding
+    if (!email) {
+      setErrorMessage("Please enter your email address.");
+      return; // Exit the function if email is empty
+    }
+
+    // Validate email format
+    const isValidEmail = validateEmail(email); // Replace with your email validation function
+    if (!isValidEmail) {
+      setErrorMessage("Please enter a valid email address.");
+      return; // Exit the function if email format is invalid
+    }
+
+    // Email is not empty and has valid format, proceed with existence check
+    if (true) {
+      console.log("EMAIL EXIST");
       setErrorMessage("This email is already registered!");
     } else {
       console.log("EMAIL DOES NOT EXIST");
+      navigation.navigate("VerifyEmailCode");
     }
   };
 
+  // Function to validate email format (replace with your implementation)
+  function validateEmail(email: string) {
+    const re =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+  }
+
   return (
-    <KeyboardAvoidingView className="flex-1 items-center bg-white px-9">
+    <View className="flex-1 items-center bg-white px-9">
       <Text className="text-3xl font-bold text-center mt-10 mb-5">
         What's your email?
       </Text>
@@ -119,11 +145,11 @@ const CreateAccount = () => {
           onPress={handleVerify}
           className="h-14 mt-5 bg-sky-950 rounded-xl items-center w-full overflow-hidden justify-center"
         >
-          <Text className="text-white font-normal text-lg">Verify</Text>
+          <Text className="text-white font-normal text-lg">Send Code</Text>
         </TouchableOpacity>
       </View>
-    </KeyboardAvoidingView>
+    </View>
   );
 };
 
-export default CreateAccount;
+export default VerifyEmail;
