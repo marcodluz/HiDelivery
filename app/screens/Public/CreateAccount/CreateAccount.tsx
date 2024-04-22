@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { useAuth } from "@/app/context/AuthContext";
 import useNavigationController from "@/app/services/useNavigationController";
+import Input from "@/app/components/ui/dataEditors/input/Input";
 
 const CreateAccount = () => {
   const [email, setEmail] = React.useState("");
@@ -40,10 +41,9 @@ const CreateAccount = () => {
         What's your email?
       </Text>
       <View className="w-full mb-5">
-        <TextInput
-          className={`border border-slate-200 px-4 py-5 rounded-xl ${
-            errorMessage && "border-red-500"
-          }`}
+        <Input
+          value={email}
+          maxLength={254}
           placeholder="Email Address"
           keyboardType="email-address"
           inputMode="email"
@@ -52,14 +52,12 @@ const CreateAccount = () => {
           clearButtonMode="while-editing"
           returnKeyType="next"
           autoCapitalize="none"
-          maxLength={254}
-          value={email}
-          onChangeText={setEmail}
-          onChange={() => setErrorMessage("")}
+          errorMessage={errorMessage}
+          onChange={(value) => {
+            setEmail(value);
+            setErrorMessage(""); // Clear error on change
+          }}
         />
-        {errorMessage && (
-          <Text className="text-red-500 text-sm mt-2">{errorMessage}</Text>
-        )}
         {/*<TextInput
           className="border border-slate-200 px-4 py-5 mt-3 rounded-xl"
           placeholder="First Name"
