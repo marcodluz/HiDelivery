@@ -11,7 +11,6 @@ import {
   orderByChild,
   query,
   startAt,
-  get,
 } from "firebase/database";
 import { db } from "@/firebase";
 import { IOrder } from "@/app/interfaces/IOrder";

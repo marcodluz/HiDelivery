@@ -9,17 +9,32 @@ import {
   browserLocalPersistence,
   User,
 } from "@firebase/auth";
-import { auth } from "@/firebase";
+import {
+  ref,
+  set,
+  orderByChild,
+  equalTo,
+  limitToFirst,
+  query,
+  get,
+} from "firebase/database";
+import { auth, db } from "@/firebase";
 import { useNavigation } from "@react-navigation/native";
 
 type AuthContextType = {
   user: User | undefined;
   isLoading: boolean;
-  createAccount: (email: string, password: string) => {};
+  createAccount: (
+    email: string,
+    password: string,
+    firstName: string,
+    lastName: string
+  ) => {};
   userSignIn: (email: string, password: string) => {};
   userSignOut: () => {};
   userResetPassword: (email: string) => {};
   userDeleteAccount: () => {};
+  isEmailInUse: (email: string) => {};
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -44,22 +59,42 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   React.useEffect(() => {
     const syncUserState = onAuthStateChanged(auth, (user: any) => {
       setUser(user);
-
-      // if (!user) {
-      //   navigation.navigate("Welcome");
-      // } else {
-      //   navigation.navigate("Customer");
-      // }
     });
 
-    return () => syncUserState();
-  }, []);
+    console.log("DEBUG");
 
-  const createAccount = async (email: string, password: string) => {
+    return () => syncUserState();
+  }, [auth]);
+
+  const createAccount = async (
+    email: string,
+    password: string,
+    firstName: string,
+    lastName: string
+  ) => {
     setIsLoading(true);
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      await signInWithEmailAndPassword(auth, email, password);
+      const createdUser = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const uid = createdUser?.user?.uid; // Check for user and uid existence
+
+      if (!uid) {
+        // Handle error: User creation might have failed
+        console.error("Error creating user!");
+        return;
+      }
+
+      const userRef = ref(db, `users/${uid}`);
+      await set(userRef, {
+        email,
+        uid,
+        firstName,
+        lastName,
+      });
+
       navigation.navigate("Customer");
       console.log("User created successfully!", email);
     } catch (error: any) {
@@ -121,6 +156,24 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
+  const isEmailInUse = async (email: string) => {
+    try {
+      const userRef = query(
+        ref(db, "users"),
+        orderByChild("email"),
+        equalTo(email),
+        limitToFirst(1) // Limit to 1 document to improve efficiency
+      );
+
+      const snapshot = await get(userRef);
+      return !snapshot.val().empty;
+    } catch (error: any) {
+      console.error("Error checking email existence:", error.message);
+      // Consider throwing a custom error for handling in the calling function
+      return false; // Or return a default value indicating error
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -131,6 +184,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         userSignOut,
         userResetPassword,
         userDeleteAccount,
+        isEmailInUse,
       }}
     >
       {children}

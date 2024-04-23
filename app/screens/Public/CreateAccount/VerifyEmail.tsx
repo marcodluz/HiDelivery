@@ -1,11 +1,5 @@
 import * as React from "react";
-import {
-  KeyboardAvoidingView,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { useAuth } from "@/app/context/AuthContext";
 import useNavigationController from "@/app/services/useNavigationController";
 import Input from "@/app/components/ui/dataEditors/input/Input";
@@ -18,14 +12,14 @@ const VerifyEmail = () => {
   const [mobileNumber, setMobileNumber] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [errorMessage, setErrorMessage] = React.useState("");
-  const { createAccount, user } = useAuth();
+  const { createAccount, user, isEmailInUse } = useAuth();
   const navigation = useNavigation();
 
   useNavigationController(user, "Get Started", true);
 
-  // const handleCreateAccount = async () => {
-  //   await createAccount(email, password);
-  // };
+  const handleCreateAccount = async () => {
+    await createAccount(email, password, "Marco", "Luz");
+  };
 
   const handleVerify = async () => {
     // Clear previous error message before checking
@@ -45,7 +39,7 @@ const VerifyEmail = () => {
     }
 
     // Email is not empty and has valid format, proceed with existence check
-    if (true) {
+    if (isEmailInUse(email)) {
       console.log("EMAIL EXIST");
       setErrorMessage("This email is already registered!");
     } else {
@@ -125,7 +119,7 @@ const VerifyEmail = () => {
           maxLength={15}
           value={mobileNumber}
           onChangeText={setMobileNumber}
-        />
+        />*/}
         <TextInput
           className="border border-slate-200 px-4 py-5 mt-3 rounded-xl"
           placeholder="Password"
@@ -139,10 +133,10 @@ const VerifyEmail = () => {
           secureTextEntry
           value={password}
           onChangeText={setPassword}
-        /> */}
+        />
         <TouchableOpacity
-          // onPress={handleCreateAccount}
-          onPress={handleVerify}
+          onPress={handleCreateAccount}
+          // onPress={handleVerify}
           className="h-14 mt-5 bg-sky-950 rounded-xl items-center w-full overflow-hidden justify-center"
         >
           <Text className="text-white font-normal text-lg">Send Code</Text>
