@@ -1,9 +1,11 @@
 import { useAuth } from "@/app/context/AuthContext";
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Alert, Text, TouchableOpacity, View } from "react-native";
 
 const Account = () => {
   const { user, userSignOut, userDeleteAccount } = useAuth();
+  const navigation = useNavigation();
 
   const handleSignOut = async () => {
     await userSignOut();
