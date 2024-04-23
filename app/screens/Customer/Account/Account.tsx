@@ -9,11 +9,7 @@ const Account = () => {
 
   React.useEffect(() => {
     const fetchData = async () => {
-      try {
-        setUserData(await getUserData());
-      } catch (error: any) {
-        console.log("FAILED");
-      }
+      setUserData(await getUserData());
     };
 
     fetchData();
@@ -39,11 +35,12 @@ const Account = () => {
   };
 
   return (
-    <View className="px-5 h-full bg-white flex-col justify-between py-4">
-      <Text className="text-2xl font-semibold">
-        {userData?.firstName} {userData?.lastName}
-      </Text>
-      <Text className="text-2xl font-semibold">{userData?.email}</Text>
+    <View className="px-5 h-full bg-white flex-col justify-between pt-16 pb-4">
+      <View className="">
+        <Text className="text-4xl font-semibold">
+          Hi, {userData?.firstName}
+        </Text>
+      </View>
       <View className="">
         <TouchableOpacity
           className="h-14 mt-5 bg-rose-600 rounded-full w-full overflow-hidden justify-center items-center"

@@ -12,6 +12,7 @@ function CustomerNavigation() {
       initialRouteName="Home"
       screenOptions={{
         tabBarActiveTintColor: "black",
+        headerShadowVisible: false,
       }}
     >
       <Tab.Screen
@@ -30,6 +31,7 @@ function CustomerNavigation() {
           tabBarIcon: ({ color, size }) => (
             <FontAwesome6 name="user" color={color} size={size} />
           ),
+          headerShown: false,
         }}
       />
     </Tab.Navigator>
