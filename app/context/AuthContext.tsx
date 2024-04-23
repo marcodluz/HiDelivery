@@ -16,6 +16,7 @@ import {
   limitToFirst,
   query,
   get,
+  onValue,
 } from "firebase/database";
 import { auth, db } from "@/firebase";
 
@@ -34,6 +35,7 @@ type AuthContextType = {
   userDeleteAccount: () => {};
   isEmailInUse: (email: string) => {};
   sendEmailVerificationCode: (email: string) => {};
+  getUserData: () => {};
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -160,7 +162,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       );
 
       const snapshot = await get(userRef);
-      console.log(snapshot.val() !== null);
       return snapshot.val() !== null;
     } catch (error: any) {
       console.error("Error checking email existence:", error.message);
@@ -182,6 +183,21 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
+  const getUserData = async () => {
+    setIsLoading(true);
+    try {
+      const userRef = query(ref(db, "users/" + auth.currentUser?.uid));
+
+      const snapshot = await get(userRef); // Use get for a single data fetch
+      const data = snapshot.val();
+      return data; // Return the data object
+    } catch (error: any) {
+      console.error("Error getting user data:", error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -194,6 +210,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         userDeleteAccount,
         isEmailInUse,
         sendEmailVerificationCode,
+        getUserData,
       }}
     >
       {children}
