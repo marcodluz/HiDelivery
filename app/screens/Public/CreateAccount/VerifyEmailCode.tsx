@@ -1,15 +1,12 @@
 import * as React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { useAuth } from "@/app/context/AuthContext";
-import useNavigationController from "@/app/services/useNavigationController";
 import Input from "@/app/components/ui/dataEditors/input/Input";
 
 const VerifyEmailCode = () => {
   const [email, setEmail] = React.useState("");
   const [errorMessage, setErrorMessage] = React.useState("");
   const { user } = useAuth();
-
-  useNavigationController(user, "Get Started", true);
 
   return (
     <View className="flex-1 items-center bg-white px-9">

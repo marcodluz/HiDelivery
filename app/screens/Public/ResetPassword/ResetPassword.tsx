@@ -2,14 +2,11 @@ import * as React from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { useAuth } from "@/app/context/AuthContext";
 import { useNavigation } from "@react-navigation/native";
-import useNavigationController from "@/app/services/useNavigationController";
 
 const ResetPassword = () => {
   const navigation = useNavigation();
   const [email, setEmail] = React.useState("");
   const { userResetPassword, user } = useAuth();
-
-  useNavigationController(user, "Get Started");
 
   const handlePasswordReset = async () => {
     await userResetPassword(email);

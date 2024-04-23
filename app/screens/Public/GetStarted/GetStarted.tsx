@@ -1,13 +1,8 @@
 import { useAuth } from "@/app/context/AuthContext";
-import useNavigationController from "@/app/services/useNavigationController";
 import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 
 const GetStarted = ({ navigation }: any) => {
-  const { user } = useAuth();
-
-  useNavigationController(user, "Welcome", true);
-
   return (
     <View className="flex-1 items-center bg-white px-9">
       <View className="w-full justify-between mt-16 mb-10">

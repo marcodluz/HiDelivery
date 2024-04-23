@@ -2,12 +2,11 @@ import React, { createContext, useContext, useState, ReactNode } from "react";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  onAuthStateChanged,
   signOut,
   sendPasswordResetEmail,
-  setPersistence,
-  browserLocalPersistence,
   User,
+  sendEmailVerification,
+  onAuthStateChanged,
 } from "@firebase/auth";
 import {
   ref,
@@ -19,7 +18,6 @@ import {
   get,
 } from "firebase/database";
 import { auth, db } from "@/firebase";
-import { useNavigation } from "@react-navigation/native";
 
 type AuthContextType = {
   user: User | undefined;
@@ -35,6 +33,7 @@ type AuthContextType = {
   userResetPassword: (email: string) => {};
   userDeleteAccount: () => {};
   isEmailInUse: (email: string) => {};
+  sendEmailVerificationCode: (email: string) => {};
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -52,18 +51,17 @@ type AuthProviderProps = {
 };
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  const navigation = useNavigation();
   const [user, setUser] = React.useState<User>();
   const [isLoading, setIsLoading] = useState(true);
 
   React.useEffect(() => {
-    const syncUserState = onAuthStateChanged(auth, (user: any) => {
-      setUser(user);
+    onAuthStateChanged(auth, (authUser) => {
+      if (authUser) {
+        setUser(authUser);
+      } else {
+        setUser(undefined);
+      }
     });
-
-    console.log("DEBUG");
-
-    return () => syncUserState();
   }, [auth]);
 
   const createAccount = async (
@@ -95,7 +93,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         lastName,
       });
 
-      navigation.navigate("Customer");
       console.log("User created successfully!", email);
     } catch (error: any) {
       console.error("Authentication error:", error.message);
@@ -106,11 +103,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const userSignIn = async (email: string, password: string) => {
     setIsLoading(true);
-    setPersistence(auth, browserLocalPersistence);
     try {
       await signInWithEmailAndPassword(auth, email, password);
       console.log("User signed in successfully!", auth.currentUser?.email);
-      navigation.navigate("Customer");
     } catch (error: any) {
       console.error("Authentication error:", error.message);
     } finally {
@@ -123,7 +118,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     try {
       await signOut(auth);
       console.log("User logged out successfully!", auth.currentUser?.email);
-      navigation.navigate("Welcome");
     } catch (error: any) {
       console.error("Error signing out:", error.message);
     } finally {
@@ -148,7 +142,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     try {
       await user?.delete();
       console.log("User account deleted successfully!");
-      navigation.navigate("Welcome");
     } catch (error: any) {
       console.error("Error deleting user account:", error.message);
     } finally {
@@ -157,6 +150,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   };
 
   const isEmailInUse = async (email: string) => {
+    setIsLoading(true);
     try {
       const userRef = query(
         ref(db, "users"),
@@ -166,11 +160,25 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       );
 
       const snapshot = await get(userRef);
-      return !snapshot.val().empty;
+      console.log(snapshot.val() !== null);
+      return snapshot.val() !== null;
     } catch (error: any) {
       console.error("Error checking email existence:", error.message);
       // Consider throwing a custom error for handling in the calling function
       return false; // Or return a default value indicating error
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const sendEmailVerificationCode = async (email: string) => {
+    setIsLoading(true);
+    try {
+      await sendEmailVerification(auth.currentUser!);
+    } catch (error: any) {
+      console.error("Error sending email verification code:", error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -185,6 +193,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         userResetPassword,
         userDeleteAccount,
         isEmailInUse,
+        sendEmailVerificationCode,
       }}
     >
       {children}

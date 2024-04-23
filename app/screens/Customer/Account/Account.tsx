@@ -1,17 +1,9 @@
 import { useAuth } from "@/app/context/AuthContext";
-import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Alert, Text, TouchableOpacity, View } from "react-native";
 
 const Account = () => {
-  const navigation = useNavigation();
   const { user, userSignOut, userDeleteAccount } = useAuth();
-
-  React.useEffect(() => {
-    if (!user) {
-      navigation.navigate("Login");
-    }
-  }, []);
 
   const handleSignOut = async () => {
     await userSignOut();

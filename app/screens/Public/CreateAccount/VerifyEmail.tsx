@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { useAuth } from "@/app/context/AuthContext";
-import useNavigationController from "@/app/services/useNavigationController";
 import Input from "@/app/components/ui/dataEditors/input/Input";
 import { useNavigation } from "@react-navigation/native";
 
@@ -12,13 +11,12 @@ const VerifyEmail = () => {
   const [mobileNumber, setMobileNumber] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [errorMessage, setErrorMessage] = React.useState("");
-  const { createAccount, user, isEmailInUse } = useAuth();
+  const { createAccount, user, isEmailInUse, sendEmailVerificationCode } =
+    useAuth();
   const navigation = useNavigation();
 
-  useNavigationController(user, "Get Started", true);
-
-  const handleCreateAccount = async () => {
-    await createAccount(email, password, "Marco", "Luz");
+  const handleCreateAccount = () => {
+    createAccount(email, password, "Marco", "Luz");
   };
 
   const handleVerify = async () => {
@@ -28,22 +26,22 @@ const VerifyEmail = () => {
     // Check if email is empty before proceeding
     if (!email) {
       setErrorMessage("Please enter your email address.");
-      return; // Exit the function if email is empty
+      return;
     }
 
     // Validate email format
-    const isValidEmail = validateEmail(email); // Replace with your email validation function
+    const isValidEmail = validateEmail(email);
     if (!isValidEmail) {
       setErrorMessage("Please enter a valid email address.");
-      return; // Exit the function if email format is invalid
+      return;
     }
 
     // Email is not empty and has valid format, proceed with existence check
-    if (isEmailInUse(email)) {
-      console.log("EMAIL EXIST");
+    const isEmailUsed = await isEmailInUse(email);
+    if (isEmailUsed) {
       setErrorMessage("This email is already registered!");
     } else {
-      console.log("EMAIL DOES NOT EXIST");
+      // await sendEmailVerificationCode(email);
       navigation.navigate("VerifyEmailCode");
     }
   };
@@ -136,7 +134,7 @@ const VerifyEmail = () => {
         />
         <TouchableOpacity
           onPress={handleCreateAccount}
-          // onPress={handleVerify}
+          //onPress={handleVerify}
           className="h-14 mt-5 bg-sky-950 rounded-xl items-center w-full overflow-hidden justify-center"
         >
           <Text className="text-white font-normal text-lg">Send Code</Text>

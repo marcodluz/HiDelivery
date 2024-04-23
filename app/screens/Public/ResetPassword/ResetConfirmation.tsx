@@ -2,13 +2,10 @@ import * as React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { useAuth } from "@/app/context/AuthContext";
 import { useNavigation } from "@react-navigation/native";
-import useNavigationController from "@/app/services/useNavigationController";
 
 const ResetConfirmation = () => {
   const navigation = useNavigation();
   const { user } = useAuth();
-
-  useNavigationController(user, "Get Started");
 
   return (
     <View className="flex-1 items-center bg-white px-9">
