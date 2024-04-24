@@ -42,7 +42,10 @@ const Account = () => {
       </View>
       <View className="justify-between flex-1">
         <View>
-          <TouchableOpacity className="h-14 mt-5 overflow-hidden items-center flex-row">
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Manage Account")}
+            className="h-14 mt-5 overflow-hidden items-center flex-row"
+          >
             <FontAwesome6 name="user" size={22} color="black" />
             <Text className="text-black text-xl ml-2">Manage Account</Text>
           </TouchableOpacity>
