@@ -4,6 +4,8 @@ import { FontAwesome6 } from "@expo/vector-icons";
 import Home from "@/app/screens/Customer/Home/Home";
 import Basket from "@/app/screens/Customer/Basket/Basket";
 import Account from "@/app/screens/Customer/Account";
+import Rewards from "./Rewards/Rewards";
+import Orders from "./Orders/Orders";
 
 const Tab = createBottomTabNavigator();
 
@@ -27,11 +29,29 @@ function CustomerNavigation() {
         }}
       />
       <Tab.Screen
+        name="Rewards"
+        component={Rewards}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome6 name="gift" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
         name="Basket"
         component={Basket}
         options={{
           tabBarIcon: ({ color, size }) => (
             <FontAwesome6 name="basket-shopping" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Orders"
+        component={Orders}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome6 name="clipboard-list" color={color} size={size} />
           ),
         }}
       />

@@ -13,7 +13,6 @@ const Privacy = () => {
       [
         {
           text: "Cancel",
-          onPress: () => console.log("Cancel Pressed"),
           style: "cancel",
         },
         { text: "Delete", onPress: () => userDeleteAccount() },

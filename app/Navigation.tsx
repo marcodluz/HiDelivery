@@ -137,6 +137,7 @@ const Navigation = () => {
               headerStyle: {
                 backgroundColor: "white",
               },
+              gestureEnabled: true,
             }}
           />
           <Stack.Screen
@@ -149,6 +150,7 @@ const Navigation = () => {
               headerStyle: {
                 backgroundColor: "white",
               },
+              gestureEnabled: true,
             }}
           />
         </Stack.Navigator>

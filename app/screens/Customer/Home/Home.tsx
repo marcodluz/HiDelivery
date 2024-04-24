@@ -56,10 +56,11 @@ const Home = () => {
       >
         <Text className="text-black font-semibold text-lg">Create an Item</Text>
       </TouchableOpacity> */}
-      <View className="px-5">
+      <View>
         <FlatList
           data={itemsList}
           numColumns={3}
+          className="flex"
           renderItem={({ item }) => <Item item={item} />}
         />
       </View>

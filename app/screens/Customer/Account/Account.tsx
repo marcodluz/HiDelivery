@@ -1,7 +1,7 @@
 import { useAuth } from "@/app/context/AuthContext";
 import { IUser } from "@/app/interfaces/IUser";
 import React, { useState } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Alert, Text, TouchableOpacity, View } from "react-native";
 import { defaultScreen } from "@/app/styles/Global";
 import { useNavigation } from "@react-navigation/native";
 import { FontAwesome6 } from "@expo/vector-icons";
@@ -20,7 +20,17 @@ const Account = () => {
   }, []);
 
   const handleSignOut = async () => {
-    await userSignOut();
+    Alert.alert(
+      "Logout",
+      "Are you sure you want to logout from your account?",
+      [
+        {
+          text: "Cancel",
+          style: "cancel",
+        },
+        { text: "Logout ", onPress: () => userSignOut() },
+      ]
+    );
   };
 
   return (

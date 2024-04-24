@@ -32,7 +32,7 @@ const QuantityChanger = (props: QuantityChangerProps) => {
               {quantity}
             </Text>
           </View>
-          <View className="flex-row rounded-full justify-between absolute z-10 top-20 w-full ml-1 px-1">
+          <View className="flex-row rounded-full justify-between absolute z-10 top-16 w-full ml-1 px-1">
             <TouchableOpacity
               className="bg-white w-9 h-9 rounded-full justify-center items-center shadow-sm"
               onPress={handleMinusPress}
