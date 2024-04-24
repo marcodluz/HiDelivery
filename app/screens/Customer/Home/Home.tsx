@@ -4,6 +4,7 @@ import { useItems } from "@/app/services/useItems";
 import Item from "@/app/components/Item/Item";
 import { useAuth } from "@/app/context/AuthContext";
 import { useNavigation } from "@react-navigation/native";
+import { defaultScreen } from "@/app/styles/Global";
 
 // const order = {
 //   distance: "18.3",
@@ -32,17 +33,9 @@ import { useNavigation } from "@react-navigation/native";
 
 const Home = () => {
   const itemsList = useItems();
-  const navigation = useNavigation();
-  const { user } = useAuth();
-
-  React.useEffect(() => {
-    if (!user) {
-      navigation.navigate("Login");
-    }
-  }, []);
 
   return (
-    <View className="bg-white h-full">
+    <View className={`${defaultScreen}`}>
       {/* <TouchableOpacity
         className="py-2 items-center"
         onPress={() => Database.createOrder(order)}

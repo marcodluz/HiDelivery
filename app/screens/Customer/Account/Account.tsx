@@ -2,10 +2,13 @@ import { useAuth } from "@/app/context/AuthContext";
 import { IUser } from "@/app/interfaces/IUser";
 import React, { useState } from "react";
 import { Alert, Text, TouchableOpacity, View } from "react-native";
+import { defaultScreen } from "@/app/styles/Global";
+import { useNavigation } from "@react-navigation/native";
 
 const Account = () => {
-  const { user, userSignOut, userDeleteAccount, getUserData } = useAuth();
+  const { userSignOut, getUserData } = useAuth();
   const [userData, setUserData] = useState<IUser>();
+  const navigation = useNavigation();
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -19,44 +22,25 @@ const Account = () => {
     await userSignOut();
   };
 
-  const handleDeleteAccount = () => {
-    Alert.alert(
-      "Delete Account",
-      "Are you sure you want to delete your account and all associated information? This action is irreversible.",
-      [
-        {
-          text: "Cancel",
-          onPress: () => console.log("Cancel Pressed"),
-          style: "cancel",
-        },
-        { text: "Delete", onPress: () => userDeleteAccount() },
-      ]
-    );
-  };
-
   return (
-    <View className="px-5 h-full bg-white flex-col justify-between pt-16 pb-4">
-      <View className="">
+    <View className={`${defaultScreen}`}>
+      <View>
         <Text className="text-4xl font-semibold">
           Hi, {userData?.firstName}
         </Text>
       </View>
-      <View className="">
+      <View className="justify-between flex-1">
         <TouchableOpacity
-          className="h-14 mt-5 bg-rose-600 rounded-full w-full overflow-hidden justify-center items-center"
-          onPress={handleSignOut}
+          onPress={() => navigation.navigate("Privacy")}
+          className="h-14 mt-5 bg-gray-100 rounded-full w-full overflow-hidden justify-center items-center"
         >
-          <Text className="text-white font-semibold text-2xl">
-            {"  "}
-            Logout
-          </Text>
+          <Text className="text-black text-xl">Privacy</Text>
         </TouchableOpacity>
         <Text
-          className="text-rose-600 font-semibold text-base text-center mt-5"
-          onPress={handleDeleteAccount}
+          onPress={handleSignOut}
+          className="text-rose-600 font-semibold text-base text-center"
         >
-          {"  "}
-          Delete Account
+          Logout
         </Text>
       </View>
     </View>

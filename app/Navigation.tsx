@@ -121,18 +121,7 @@ const Navigation = () => {
           })}
         >
           <Stack.Screen name="Customer" component={CustomerNavigation} />
-          <Stack.Screen
-            name="Home"
-            component={Home}
-            options={{
-              title: "Home",
-              headerShown: true,
-              headerTintColor: "black",
-              headerStyle: {
-                backgroundColor: "white",
-              },
-            }}
-          />
+          <Stack.Screen name="Home" component={Home} />
           <Stack.Screen
             name="Customer - Select Address"
             component={SelectAddress}

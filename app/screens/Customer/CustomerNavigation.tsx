@@ -1,8 +1,9 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Home from "./Home/Home";
 import { FontAwesome6 } from "@expo/vector-icons";
-import Account from "./Account/Account";
+import Home from "@/app/screens/Customer/Home/Home";
+import Basket from "@/app/screens/Customer/Basket/Basket";
+import Account from "@/app/screens/Customer/Account";
 
 const Tab = createBottomTabNavigator();
 
@@ -13,6 +14,7 @@ function CustomerNavigation() {
       screenOptions={{
         tabBarActiveTintColor: "black",
         headerShadowVisible: false,
+        headerShown: false,
       }}
     >
       <Tab.Screen
@@ -25,13 +27,22 @@ function CustomerNavigation() {
         }}
       />
       <Tab.Screen
-        name="Account"
+        name="Basket"
+        component={Basket}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome6 name="basket-shopping" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="AccountTab"
         component={Account}
         options={{
           tabBarIcon: ({ color, size }) => (
             <FontAwesome6 name="user" color={color} size={size} />
           ),
-          headerShown: false,
+          title: "Account",
         }}
       />
     </Tab.Navigator>
