@@ -56,12 +56,17 @@ const Home = () => {
       >
         <Text className="text-black font-semibold text-lg">Create an Item</Text>
       </TouchableOpacity> */}
-      <View>
+      <View className="h-full">
         <FlatList
           data={itemsList}
-          numColumns={3}
-          className="flex"
+          numColumns={2}
           renderItem={({ item }) => <Item item={item} />}
+          columnWrapperStyle={{
+            display: "flex",
+            flexWrap: "wrap",
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
         />
       </View>
     </View>
