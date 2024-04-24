@@ -5,7 +5,10 @@ import { defaultScreen } from "@/app/styles/Global";
 const Basket = () => {
   return (
     <View className={`${defaultScreen}`}>
-      <Text>Basket</Text>
+      <View className="">
+        <Text className="text-4xl font-semibold">Basket</Text>
+        <Text className="mt-5">Your card is empty for now.</Text>
+      </View>
     </View>
   );
 };
