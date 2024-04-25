@@ -4,6 +4,7 @@ import RenderOrder from "@/app/components/Order/Order";
 import { useOrders } from "@/app/services/useOrders";
 import { useNavigation } from "@react-navigation/native";
 import { useAuth } from "@/app/context/AuthContext";
+import { screenWithHeader } from "@/app/styles/Global";
 
 const Orders = () => {
   const [startTime, setStartTime] = useState(1709745048421);
@@ -20,9 +21,9 @@ const Orders = () => {
   }, []);
 
   return (
-    <View className="bg-gray-100 h-full">
+    <View className={`${screenWithHeader}`}>
       {user && (
-        <View className="px-5">
+        <View>
           <FlatList
             data={ordersList}
             renderItem={({ item }) => <RenderOrder order={item} />}

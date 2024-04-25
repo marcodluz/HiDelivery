@@ -54,7 +54,7 @@ const RenderOrder = ({ order }: RenderOrderProps) => {
   };
 
   return (
-    <TouchableOpacity className="bg-white w-full rounded-2xl p-5 shadow-sm mt-5 flex justify-between">
+    <TouchableOpacity className="bg-white w-full border border-slate-200 rounded-2xl p-5 mb-5 flex justify-between">
       <View className="flex-row gap-3 h-32">
         <View className="justify-around">
           <FontAwesome6 name="location-dot" size={18} color="black" />

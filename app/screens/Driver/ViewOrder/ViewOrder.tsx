@@ -3,14 +3,15 @@ import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { useOrder } from "@/app/context/OrderContext";
 import QuantityChanger from "@/app/components/QuantityChanger/QuantityChanger";
+import { screenWithHeader } from "@/app/styles/Global";
 
 const ViewOrder = () => {
   const { order } = useOrder();
   const placeholderImage = require("@/assets/placeholder.jpg");
 
   return (
-    <View className="bg-white h-full">
-      <View className="p-5 flex-column h-full">
+    <View className={`${screenWithHeader}`}>
+      <View className="flex-column h-full">
         <ScrollView>
           <View className="w-full flex justify-between">
             <Text className="font-bold text-3xl">Order #{order?.id}</Text>
