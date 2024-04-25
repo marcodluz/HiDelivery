@@ -1,7 +1,7 @@
 import { useAuth } from "@/app/context/AuthContext";
 import { IUser } from "@/app/interfaces/IUser";
 import React, { useState } from "react";
-import { Alert, Text, TouchableOpacity, View } from "react-native";
+import { Alert, Linking, Text, TouchableOpacity, View } from "react-native";
 import { defaultScreen } from "@/app/styles/Global";
 import { useNavigation } from "@react-navigation/native";
 import { FontAwesome6 } from "@expo/vector-icons";
@@ -65,6 +65,15 @@ const Account = () => {
             <View className="bg-green-300 py-1 px-4 rounded-full ml-2">
               <Text className="font-bold">Apply now</Text>
             </View>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => Linking.openURL("https://discord.gg/CUym4N9a8t")}
+            className="h-14 mt-5 overflow-hidden items-center flex-row"
+          >
+            <FontAwesome6 name="discord" size={22} color="black" />
+            <Text className="text-black text-xl ml-2">
+              Join our Discord Community
+            </Text>
           </TouchableOpacity>
         </View>
         <Text
