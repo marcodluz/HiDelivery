@@ -80,7 +80,7 @@ const AddressSearchBar = () => {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View>
         <TextInput
-          className="text-base bg-white h-14 rounded-2xl border-gray-200 border-2 text-center"
+          className="text-base bg-white h-14 rounded-2xl border-gray-200 border text-center"
           placeholder="Search for your address"
           onChangeText={(text) => {
             setQuery(text);

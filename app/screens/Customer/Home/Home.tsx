@@ -1,5 +1,11 @@
 import React from "react";
-import { Text, TouchableOpacity, View, FlatList } from "react-native";
+import {
+  Text,
+  TouchableOpacity,
+  View,
+  FlatList,
+  TextInput,
+} from "react-native";
 import { useItems } from "@/app/services/useItems";
 import Item from "@/app/components/Item/Item";
 import { useAuth } from "@/app/context/AuthContext";
@@ -56,6 +62,10 @@ const Home = () => {
       >
         <Text className="text-black font-semibold text-lg">Create an Item</Text>
       </TouchableOpacity> */}
+      <TextInput
+        className="text-base bg-white h-14 rounded-2xl border-gray-200 border text-center mb-5"
+        placeholder="Search for anything"
+      />
       <View className="h-full">
         <FlatList
           data={itemsList}
