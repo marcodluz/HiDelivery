@@ -17,7 +17,7 @@ const VerifyEmailCode = () => {
         <Input
           value={email}
           maxLength={254}
-          placeholder="Email Address"
+          placeholder="Code"
           keyboardType="email-address"
           inputMode="email"
           textContentType="emailAddress"
