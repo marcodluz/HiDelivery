@@ -137,7 +137,7 @@ const VerifyEmail = () => {
           //onPress={handleVerify}
           className="h-14 mt-5 bg-sky-950 rounded-xl items-center w-full overflow-hidden justify-center"
         >
-          <Text className="text-white font-normal text-lg">Send Code</Text>
+          <Text className="text-white font-normal text-lg">Send Email Code</Text>
         </TouchableOpacity>
       </View>
     </View>
