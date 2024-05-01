@@ -7,7 +7,7 @@ import {
   TextInput,
 } from "react-native";
 import { useItems } from "@/app/services/useItems";
-import Item from "@/app/components/Item/Item";
+import Item from "@/app/components/item/Item";
 import { useAuth } from "@/app/context/AuthContext";
 import { useNavigation } from "@react-navigation/native";
 import { defaultScreen } from "@/app/styles/Global";

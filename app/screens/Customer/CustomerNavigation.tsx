@@ -1,11 +1,11 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { FontAwesome6 } from "@expo/vector-icons";
-import Home from "@/app/screens/Customer/Home/Home";
-import Basket from "@/app/screens/Customer/Basket/Basket";
-import Account from "@/app/screens/Customer/Account";
-import Rewards from "./Rewards/Rewards";
-import Orders from "./Orders/Orders";
+import Home from "@/app/screens/customer/home/Home";
+import Basket from "@/app/screens/customer/basket/Basket";
+import Account from "@/app/screens/customer/account";
+import Rewards from "@/app/screens/customer/rewards/Rewards";
+import Orders from "@/app/screens/customer/orders/Orders";
 
 const Tab = createBottomTabNavigator();
 

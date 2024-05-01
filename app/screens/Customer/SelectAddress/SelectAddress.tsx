@@ -1,10 +1,10 @@
 import React from "react";
-import AddressSearchBar from "@/app/components/AddressSearchBar/AddressSearchBar";
+import AddressSearchBar from "@/app/components/addressSearchBar/AddressSearchBar";
 import { View } from "react-native";
 import { useAddress } from "@/app/context/AddressContext";
-import Map from "@/app/components/Map/Map";
-import BackButton from "@/app/components/BackButton/BackButton";
-import NearbyShops from "@/app/components/NearbyShops/NearbyShops";
+import Map from "@/app/components/map/Map";
+import BackButton from "@/app/components/backButton/BackButton";
+import NearbyShops from "@/app/components/nearbyShops/NearbyShops";
 
 const Products = ({ navigation }: any) => {
   console.log("Selected Address: " + useAddress().address);

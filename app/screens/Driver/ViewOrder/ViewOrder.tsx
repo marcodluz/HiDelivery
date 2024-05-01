@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { useOrder } from "@/app/context/OrderContext";
-import QuantityChanger from "@/app/components/QuantityChanger/QuantityChanger";
+import QuantityChanger from "@/app/components/quantityChanger/QuantityChanger";
 import { screenWithHeader } from "@/app/styles/Global";
 
 const ViewOrder = () => {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, FlatList } from "react-native";
-import RenderOrder from "@/app/components/Order/Order";
+import RenderOrder from "@/app/components/order/Order";
 import { useOrders } from "@/app/services/useOrders";
 import { useNavigation } from "@react-navigation/native";
 import { useAuth } from "@/app/context/AuthContext";

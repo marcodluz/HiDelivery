@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { FontAwesome6 } from "@expo/vector-icons";
-import AnimatedButton from "@/app/components/AnimatedButton/AnimatedButton";
+import AnimatedButton from "@/app/components/animatedButton/AnimatedButton";
 import { useNavigation } from "@react-navigation/native";
 import { IOrder } from "@/app/interfaces/IOrder";
 import { useOrder } from "@/app/context/OrderContext";
