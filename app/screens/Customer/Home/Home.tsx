@@ -78,6 +78,9 @@ const Home = () => {
             justifyContent: "space-between",
           }}
         />
+        <TouchableOpacity>
+          <Text>Complete Order</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
