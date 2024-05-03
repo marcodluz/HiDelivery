@@ -11,6 +11,7 @@ import Item from "@/app/components/item/Item";
 import { useAuth } from "@/app/context/AuthContext";
 import { useNavigation } from "@react-navigation/native";
 import { defaultScreen } from "@/app/styles/Global";
+import * as Database from "@/app/services/database";
 
 // const order = {
 //   distance: "18.3",

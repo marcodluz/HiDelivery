@@ -9,7 +9,7 @@ interface RenderItemProps {
 
 const RenderItem = ({ item }: RenderItemProps) => {
   return (
-    <TouchableOpacity className="border-slate-200 border rounded-2xl justify-between items-center p-3 mb-[2vw] w-[49%]">
+    <TouchableOpacity className="border-slate-200 border rounded-2xl justify-between items-center p-3 mb-[2vw] w-[49%] flex">
       {/* <QuantityChanger type={"separate"} /> */}
       {item.image ? (
         <Image source={{ uri: item.image }} className="aspect-square h-28" />
@@ -19,9 +19,13 @@ const RenderItem = ({ item }: RenderItemProps) => {
           className="rounded-2xl w-1/2 aspect-square"
         />
       )}
-      <View className="w-full">
-        <Text className="text-base font-bold">{item.title}</Text>
-        <Text className="text-sm">Description</Text>
+      <View className="w-full justify-between mt-2 flex-1">
+        <View>
+          <Text className="text-base font-bold">{item.title}</Text>
+          <Text className="text-sm">
+            {item.description ? item.description : "No description"}
+          </Text>
+        </View>
         <Text className="text-base font-semibold text-start mt-3">
           £{item.maxPrice}
         </Text>
