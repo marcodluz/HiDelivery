@@ -9,7 +9,7 @@ const Privacy = () => {
   const handleDeleteAccount = () => {
     Alert.alert(
       "Delete Account",
-      "Are you sure you want to delete your account and all associated information? This action is irreversible.",
+      "Are you sure you want to delete your account and all associated information? This action is irreversible!",
       [
         {
           text: "Cancel",
