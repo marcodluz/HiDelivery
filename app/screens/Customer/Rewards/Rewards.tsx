@@ -7,7 +7,9 @@ const Rewards = () => {
     <View className={`${defaultScreen}`}>
       <View className="">
         <Text className="text-4xl font-semibold">Rewards</Text>
-        <Text className="mt-5">You have no rewards for now.</Text>
+        <Text className="mt-5">
+          You have no rewards for now. This page is under development.
+        </Text>
       </View>
     </View>
   );
