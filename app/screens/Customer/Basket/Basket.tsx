@@ -7,7 +7,9 @@ const Basket = () => {
     <View className={`${defaultScreen}`}>
       <View className="">
         <Text className="text-4xl font-semibold">Basket</Text>
-        <Text className="mt-5">Your basket is empty for now.</Text>
+        <Text className="mt-5">
+          Your basket is empty for now. This page is under development.
+        </Text>
       </View>
     </View>
   );
