@@ -27,12 +27,6 @@ const Welcome = ({ navigation }: any) => {
         >
           <Text className="text-white font-semibold text-2xl">Get Started</Text>
         </TouchableOpacity>
-        {/* <TouchableOpacity
-          className="py-2 items-center"
-          onPress={() => navigation.navigate("Driver Dashboard")}
-        >
-          <Text className="text-black font-semibold">Driver Dashboard</Text>
-        </TouchableOpacity> */}
       </View>
     </View>
   );
