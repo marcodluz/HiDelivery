@@ -1,7 +1,7 @@
 import { IItem } from "@/app/interfaces/IItem";
 import { Text, Image, TouchableOpacity, View } from "react-native";
 import React from "react";
-import QuantityChanger from "../QuantityChanger/QuantityChanger";
+import QuantityChanger from "../quantityChanger/QuantityChanger";
 
 interface RenderItemProps {
   item: IItem;
