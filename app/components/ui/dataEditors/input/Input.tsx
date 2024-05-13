@@ -2,8 +2,8 @@ import React, { Dispatch, SetStateAction } from "react";
 import { Text, TextInput } from "react-native";
 
 interface InputProps {
-  value: string;
-  maxLength: number;
+  value?: string;
+  maxLength?: number;
   placeholder?: any;
   keyboardType?: any;
   inputMode?: any;
