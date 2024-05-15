@@ -25,7 +25,7 @@ const Privacy = () => {
       <View className="">
         <Text className="text-4xl font-semibold">Privacy</Text>
         <Text className="mt-5">
-          This is where all your privacy goes. This page is under development.
+          This is where your privacy goes. This page is under development.
         </Text>
       </View>
       <View className="justify-between flex-1">
