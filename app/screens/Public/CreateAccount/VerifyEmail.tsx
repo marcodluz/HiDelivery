@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { useAuth } from "@/app/context/AuthContext";
-import Input from "@/app/components/ui/dataEditors/input/Input";
+import TextField from "@/app/components/ui/inputs/textField/TextField";
 import { useNavigation } from "@react-navigation/native";
 
 const VerifyEmail = () => {
@@ -59,7 +59,7 @@ const VerifyEmail = () => {
         What's your email?
       </Text>
       <View className="w-full mb-5">
-        <Input
+        <TextField
           value={email}
           maxLength={254}
           placeholder="Email Address"
@@ -137,7 +137,9 @@ const VerifyEmail = () => {
           //onPress={handleVerify}
           className="h-14 mt-5 bg-sky-950 rounded-xl items-center w-full overflow-hidden justify-center"
         >
-          <Text className="text-white font-normal text-lg">Send Email Code</Text>
+          <Text className="text-white font-normal text-lg">
+            Send Email Code
+          </Text>
         </TouchableOpacity>
       </View>
     </View>

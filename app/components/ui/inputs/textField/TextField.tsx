@@ -17,7 +17,7 @@ interface InputProps {
   label?: any;
 }
 
-const Input = (props: InputProps) => {
+const TextField = (props: InputProps) => {
   return (
     <>
       {props.label && (
@@ -49,4 +49,4 @@ const Input = (props: InputProps) => {
   );
 };
 
-export default Input;
+export default TextField;

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { useAuth } from "@/app/context/AuthContext";
-import Input from "@/app/components/ui/dataEditors/input/Input";
+import TextField from "@/app/components/ui/inputs/textField/TextField";
 
 const VerifyEmailCode = () => {
   const [email, setEmail] = React.useState("");
@@ -14,7 +14,7 @@ const VerifyEmailCode = () => {
         Enter your code
       </Text>
       <View className="w-full mb-5">
-        <Input
+        <TextField
           value={email}
           maxLength={254}
           placeholder="Code"
