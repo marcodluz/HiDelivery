@@ -7,8 +7,13 @@ import { IUser } from "@/app/interfaces/IUser";
 import Button from "@/app/components/ui/inputs/button/Button";
 
 const Manage = () => {
-  const { getUserData } = useAuth();
+  const { getUserData, updateUserData } = useAuth();
   const [userData, setUserData] = useState<IUser>();
+  const [isLoading, setIsLoading] = useState(true);
+
+  const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -16,6 +21,7 @@ const Manage = () => {
     };
 
     fetchData();
+    setIsLoading(false);
   }, []);
 
   const handleDetailsChange = async () => {
@@ -27,7 +33,10 @@ const Manage = () => {
           text: "Cancel",
           style: "cancel",
         },
-        { text: "Change", onPress: () => {} },
+        {
+          text: "Change",
+          onPress: () => updateUserData(email, firstName, lastName),
+        },
       ]
     );
   };
@@ -39,23 +48,39 @@ const Manage = () => {
           <View className="mb-1">
             <Text className="font-bold text-lg">Personal Details</Text>
           </View>
-          <View className="my-1">
-            <TextField value={userData?.email} label="Email" maxLength={255} />
-          </View>
-          <View className="my-1">
-            <TextField
-              value={userData?.firstName}
-              label="First Name"
-              maxLength={255}
-            />
-          </View>
-          <View className="my-1">
-            <TextField
-              value={userData?.lastName}
-              label="Last Name"
-              maxLength={255}
-            />
-          </View>
+          {isLoading ? (
+            <Text>Loading user data...</Text>
+          ) : (
+            <>
+              <View className="my-1">
+                <TextField
+                  value={email}
+                  label="Email"
+                  placeholder={userData?.email}
+                  maxLength={255}
+                  onChange={(text) => setEmail(text)}
+                />
+              </View>
+              <View className="my-1">
+                <TextField
+                  value={firstName}
+                  label="First Name"
+                  placeholder={userData?.firstName}
+                  maxLength={255}
+                  onChange={(text) => setFirstName(text)}
+                />
+              </View>
+              <View className="my-1">
+                <TextField
+                  value={lastName}
+                  label="Last Name"
+                  placeholder={userData?.lastName}
+                  maxLength={255}
+                  onChange={(text) => setLastName(text)}
+                />
+              </View>
+            </>
+          )}
         </View>
         <Button onClick={handleDetailsChange}>Change Details</Button>
       </View>

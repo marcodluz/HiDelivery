@@ -36,6 +36,7 @@ type AuthContextType = {
   isEmailInUse: (email: string) => {};
   sendEmailVerificationCode: (email: string) => {};
   getUserData: () => {};
+  updateUserData: (email: string, password: string, lastName: string) => {};
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -198,6 +199,28 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
+  const updateUserData = async (
+    email: string,
+    firstName: string,
+    lastName: string
+  ) => {
+    setIsLoading(true);
+    try {
+      const userRef = ref(db, "users/" + auth.currentUser?.uid);
+
+      await set(userRef, {
+        email,
+        firstName,
+        lastName,
+        uid: auth.currentUser?.uid,
+      });
+    } catch (error: any) {
+      console.error("Error getting user data:", error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -211,6 +234,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         isEmailInUse,
         sendEmailVerificationCode,
         getUserData,
+        updateUserData,
       }}
     >
       {children}
