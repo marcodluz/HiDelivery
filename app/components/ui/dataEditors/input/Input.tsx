@@ -14,15 +14,22 @@ interface InputProps {
   autoCapitalize?: any;
   errorMessage?: string;
   onChange?: Dispatch<SetStateAction<string>>;
+  label?: any;
 }
 
 const Input = (props: InputProps) => {
   return (
     <>
+      {props.label && (
+        <Text className="absolute ml-4 mt-3 text-gray-400 text-xs">
+          {props.label}
+        </Text>
+      )}
+
       <TextInput
-        className={`border border-slate-200 px-4 py-5 rounded-xl ${
+        className={`border border-slate-200 px-4 rounded-xl ${
           props.errorMessage && "border-red-500"
-        }`}
+        } ${props.label ? "pt-7 pb-3" : "py-5"}`}
         placeholder={props.placeholder}
         keyboardType={props.keyboardType}
         inputMode={props.inputMode}

@@ -19,20 +19,23 @@ const Manage = () => {
 
   return (
     <View className={`${screenWithHeader}`}>
-      <View className="">
-        <Text className="text-4xl font-semibold">Manage Account</Text>
-        <Text className="mt-5">
-          This is where you can manage your account details. This page is under
-          development.
-        </Text>
-      </View>
-      <View className="justify-between flex-1 mt-5">
-        <View>
-          <Input value={userData?.email} maxLength={255} />
-          <Input value={userData?.firstName} maxLength={255} />
-          <Input value={userData?.lastName} maxLength={255} />
+      <View className="justify-between">
+        <View className="mb-1">
+          <Text className="font-bold text-lg">Personal Details</Text>
         </View>
-        <View></View>
+        <View className="my-1">
+          <Input value={userData?.email} label="Email" maxLength={255} />
+        </View>
+        <View className="my-1">
+          <Input
+            value={userData?.firstName}
+            label="First Name"
+            maxLength={255}
+          />
+        </View>
+        <View className="my-1">
+          <Input value={userData?.lastName} label="Last Name" maxLength={255} />
+        </View>
       </View>
     </View>
   );
