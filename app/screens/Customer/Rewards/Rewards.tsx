@@ -10,6 +10,7 @@ const Rewards = () => {
         <Text className="mt-5">
           You have no rewards for now. This page is under development.
         </Text>
+        <Text className="mt-5">Please come back later.</Text>
       </View>
     </View>
   );
