@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { Text, TextInput } from "react-native";
 
-interface InputProps {
+interface TextFieldProps {
   value?: string;
   maxLength?: number;
   placeholder?: any;
@@ -17,7 +17,7 @@ interface InputProps {
   label?: any;
 }
 
-const TextField = (props: InputProps) => {
+const TextField = (props: TextFieldProps) => {
   return (
     <>
       {props.label && (
