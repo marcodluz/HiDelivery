@@ -82,7 +82,7 @@ const Manage = () => {
             </>
           )}
         </View>
-        <Button onClick={handleDetailsChange}>Change Details</Button>
+        <Button onClick={handleDetailsChange}>Update Details</Button>
       </View>
     </View>
   );
