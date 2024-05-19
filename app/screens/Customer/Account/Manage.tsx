@@ -57,7 +57,7 @@ const Manage = () => {
                   value={email}
                   label="Email"
                   placeholder={userData?.email}
-                  maxLength={255}
+                  maxLength={254}
                   onChange={(text) => setEmail(text)}
                 />
               </View>
@@ -66,7 +66,7 @@ const Manage = () => {
                   value={firstName}
                   label="First Name"
                   placeholder={userData?.firstName}
-                  maxLength={255}
+                  maxLength={50}
                   onChange={(text) => setFirstName(text)}
                 />
               </View>
@@ -75,7 +75,7 @@ const Manage = () => {
                   value={lastName}
                   label="Last Name"
                   placeholder={userData?.lastName}
-                  maxLength={255}
+                  maxLength={50}
                   onChange={(text) => setLastName(text)}
                 />
               </View>
