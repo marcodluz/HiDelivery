@@ -1,15 +1,23 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, FlatList, TouchableOpacity } from "react-native";
 import { defaultScreen } from "@/app/styles/Global";
+import { useBasket } from "@/app/context/BasketContext";
+import RenderItem from "./Item";
+import { useBasketItems } from "@/app/services/useBasketItems";
 
 const Basket = () => {
+  const basketItems = useBasketItems();
+
   return (
     <View className={`${defaultScreen}`}>
       <View className="">
         <Text className="text-4xl font-semibold">Basket</Text>
-        <Text className="mt-5">
-          Your basket is empty for now. This page is under development.
-        </Text>
+        <View className="h-full">
+          <FlatList
+            data={basketItems}
+            renderItem={({ item }) => <RenderItem item={item} />}
+          />
+        </View>
       </View>
     </View>
   );

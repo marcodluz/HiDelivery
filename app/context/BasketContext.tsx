@@ -1,8 +1,14 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useEffect,
+} from "react";
 
-import { get, ref, set } from "firebase/database";
+import { get, onValue, query, ref, set } from "firebase/database";
 import { auth, db } from "@/firebase";
-import { IItem } from "../interfaces/IItem";
+import { IItem } from "@/app/interfaces/IItem";
 
 type BasketContextType = {
   addItem: (items: IItem) => {};
