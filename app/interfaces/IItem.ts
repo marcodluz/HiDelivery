@@ -5,4 +5,5 @@ export interface IItem {
   image?: string | null;
   minPrice?: number;
   maxPrice?: number;
+  quantity?: number;
 }

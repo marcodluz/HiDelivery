@@ -16,7 +16,6 @@ import {
   limitToFirst,
   query,
   get,
-  onValue,
 } from "firebase/database";
 import { auth, db } from "@/firebase";
 

@@ -1,14 +1,9 @@
+import { IItem } from "./IItem";
+
 export interface IOrder {
   id?: string;
   distance?: string;
-  items?: Array<{
-    id?: number;
-    title?: string;
-    image?: string | null;
-    quantity?: number;
-    minPrice?: number;
-    maxPrice?: number;
-  }>;
+  items?: Array<IItem>;
   time?: string;
   price?: string;
   orderTime?: number;
