@@ -43,7 +43,7 @@ const Manage = () => {
 
   return (
     <View className={`${screenWithHeader}`}>
-      <View className="justify-between h-full">
+      <View className="h-full justify-between">
         <View>
           <View className="mb-1">
             <Text className="font-bold text-lg">Personal Details</Text>

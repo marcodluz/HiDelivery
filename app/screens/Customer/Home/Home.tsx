@@ -12,6 +12,7 @@ import { useAuth } from "@/app/context/AuthContext";
 import { useNavigation } from "@react-navigation/native";
 import { defaultScreen } from "@/app/styles/Global";
 import * as Database from "@/app/services/database";
+import Button from "@/app/components/ui/inputs/button/Button";
 
 // const order = {
 //   distance: "18.3",
@@ -43,31 +44,11 @@ const Home = () => {
 
   return (
     <View className={`${defaultScreen}`}>
-      {/* <TouchableOpacity
-        className="py-2 items-center"
-        onPress={() => Database.createOrder(order)}
-      >
-        <Text className="text-black font-semibold text-lg">
-          Create an Order
-        </Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        className="py-2 items-center"
-        onPress={() => Database.getListOrders(1709745048421, 1709756842810)}
-      >
-        <Text className="text-black font-semibold text-lg">Get an Order</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        className="py-2 items-center"
-        onPress={() => Database.createItem(item)}
-      >
-        <Text className="text-black font-semibold text-lg">Create an Item</Text>
-      </TouchableOpacity> */}
-      <TextInput
-        className="text-base bg-white h-14 rounded-2xl border-gray-200 border text-center mb-5"
-        placeholder="Search for anything"
-      />
-      <View className="h-full">
+      <View className="h-full justify-between">
+        <TextInput
+          className="text-base bg-white h-14 rounded-2xl border-gray-200 border text-center mb-5"
+          placeholder="Search for anything"
+        />
         <FlatList
           data={itemsList}
           numColumns={2}
@@ -79,9 +60,9 @@ const Home = () => {
             justifyContent: "space-between",
           }}
         />
-        <TouchableOpacity>
-          <Text>Complete Order</Text>
-        </TouchableOpacity>
+      </View>
+      <View className="absolute w-full bottom-4 ml-5">
+        <Button>View basket (1)</Button>
       </View>
     </View>
   );
