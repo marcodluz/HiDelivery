@@ -27,12 +27,12 @@ const QuantityChanger = (props: QuantityChangerProps) => {
     <>
       {props.type === "separate" ? (
         <>
-          <View className="bg-red-400 h-5 w-5 rounded-full justify-center right-0 absolute z-10">
+          {/* <View className="bg-red-400 h-5 w-5 rounded-full justify-center -right-1 absolute z-10">
             <Text className="text-center text-white font-semibold">
               {quantity}
             </Text>
-          </View>
-          <View className="flex-row rounded-full justify-between absolute z-10 top-16 w-full ml-1 px-1">
+          </View> */}
+          <View className="flex-row rounded-full justify-between absolute z-10 top-20 w-full ml-1 px-1">
             <TouchableOpacity
               className="bg-white w-9 h-9 rounded-full justify-center items-center shadow-sm"
               onPress={handleMinusPress}

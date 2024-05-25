@@ -11,10 +11,18 @@ const Basket = () => {
     <View className={`${defaultScreen}`}>
       <View className="">
         <Text className="text-4xl font-semibold">Basket</Text>
-        <View className="h-full">
+        <View className="h-full -mb-16 pt-4">
           <FlatList
             data={basketItems}
+            numColumns={3}
             renderItem={({ item }) => <Item item={item} />}
+            columnWrapperStyle={{
+              display: "flex",
+              flexWrap: "wrap",
+              flexDirection: "row",
+              justifyContent: "flex-start",
+              gap: 1.3,
+            }}
           />
         </View>
       </View>
