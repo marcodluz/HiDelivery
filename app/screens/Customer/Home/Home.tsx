@@ -19,9 +19,6 @@ const Home = () => {
           data={itemsList}
           numColumns={3}
           renderItem={({ item }) => <Item item={item} />}
-          columnWrapperStyle={{
-            justifyContent: "flex-start",
-          }}
         />
       </View>
       <View className="absolute w-full bottom-4 ml-5">
