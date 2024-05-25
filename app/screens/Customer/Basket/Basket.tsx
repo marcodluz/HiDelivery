@@ -1,8 +1,7 @@
 import React from "react";
 import { View, Text, FlatList, TouchableOpacity } from "react-native";
 import { defaultScreen } from "@/app/styles/Global";
-import { useBasket } from "@/app/context/BasketContext";
-import RenderItem from "./Item";
+import Item from "@/app/components/item/Item";
 import { useBasketItems } from "@/app/services/useBasketItems";
 
 const Basket = () => {
@@ -15,7 +14,7 @@ const Basket = () => {
         <View className="h-full">
           <FlatList
             data={basketItems}
-            renderItem={({ item }) => <RenderItem item={item} />}
+            renderItem={({ item }) => <Item item={item} />}
           />
         </View>
       </View>
