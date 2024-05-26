@@ -6,10 +6,9 @@ import QuantityChanger from "../quantityChanger/QuantityChanger";
 
 interface RenderItemProps {
   item: IItem;
-  isBasket?: boolean;
 }
 
-const RenderItem = ({ item, isBasket }: RenderItemProps) => {
+const RenderItem = ({ item }: RenderItemProps) => {
   const { addItem } = useBasket();
 
   const screenWidth = Dimensions.get("window").width;
@@ -20,7 +19,8 @@ const RenderItem = ({ item, isBasket }: RenderItemProps) => {
       style={{ width: itemSize }}
       className="rounded-2xl justify-between mx-1 mb-5"
       onPress={() => {
-        !isBasket && addItem(item);
+        addItem(item.id);
+        console.log(item.id);
       }}
     >
       {/* {!isBasket && <QuantityChanger type={"separate"} />} */}
@@ -42,9 +42,6 @@ const RenderItem = ({ item, isBasket }: RenderItemProps) => {
           <Text className="font-normal text-sm text-slate-600">
             {item.title}
           </Text>
-          {isBasket && (
-            <Text className="text-sm">Quantity: {item.quantity}</Text>
-          )}
         </View>
       </View>
     </TouchableOpacity>

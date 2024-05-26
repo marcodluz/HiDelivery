@@ -1,11 +1,11 @@
 import React from "react";
-import { View, Text, FlatList, TouchableOpacity } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import { defaultScreen } from "@/app/styles/Global";
-import Item from "@/app/components/item/Item";
 import { useBasketItems } from "@/app/services/useBasketItems";
+import RenderItem from "./Item";
 
 const Basket = () => {
-  const basketItems = useBasketItems();
+  const basketItemsIds = useBasketItems();
 
   return (
     <View className={`${defaultScreen}`}>
@@ -13,16 +13,11 @@ const Basket = () => {
         <Text className="text-4xl font-semibold">Basket</Text>
         <View className="h-full -mb-16 pt-4">
           <FlatList
-            data={basketItems}
-            numColumns={3}
-            renderItem={({ item }) => <Item item={item} />}
-            columnWrapperStyle={{
-              display: "flex",
-              flexWrap: "wrap",
-              flexDirection: "row",
-              justifyContent: "flex-start",
-              gap: 1.3,
-            }}
+            data={basketItemsIds}
+            renderItem={({ item }) => (
+              <RenderItem itemId={item} /> // Pass itemId to RenderItem
+            )}
+            keyExtractor={(item) => item} // Set document reference ID as the key
           />
         </View>
       </View>

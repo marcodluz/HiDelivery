@@ -6,12 +6,12 @@ import React, {
   useEffect,
 } from "react";
 
-import { get, onValue, query, ref, set } from "firebase/database";
+import { get, onValue, push, query, ref, set } from "firebase/database";
 import { auth, db } from "@/firebase";
 import { IItem } from "@/app/interfaces/IItem";
 
 type BasketContextType = {
-  addItem: (items: IItem) => {};
+  addItem: (itemId: string) => Promise<void>;
 };
 
 const BasketContext = createContext<BasketContextType | undefined>(undefined);
@@ -31,44 +31,51 @@ type BasketProviderProps = {
 export const BasketProvider: React.FC<BasketProviderProps> = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
 
-  const addItem = async (newItem: IItem) => {
+  const addItem = async (itemId: string) => {
+    if (!itemId) {
+      console.error("Item ID must be provided");
+      return;
+    }
+
     setIsLoading(true);
     try {
-      const basketRef = ref(db, "baskets/" + auth.currentUser?.uid);
+      const userId = auth.currentUser?.uid;
+      if (!userId) {
+        throw new Error("User not authenticated");
+      }
 
-      // Fetch existing basket items
+      // Fetch the item from the original items collection
+      const itemRef = ref(db, `item/${itemId}`);
+      const itemSnapshot = await get(itemRef);
+      if (!itemSnapshot.exists()) {
+        throw new Error("Item not found in the original collection");
+      }
+
+      const newItem: IItem = itemSnapshot.val();
+
+      const basketRef = ref(db, `baskets/${userId}`);
       const snapshot = await get(basketRef);
       const basket = snapshot.val();
-      const existingItems: IItem[] = basket?.items || [];
+      const existingItems: Record<string, IItem> = basket?.items || {};
 
-      // Check if the item already exists in the basket
-      const existingItemIndex = existingItems.findIndex(
-        (item) => item.id === newItem.id
-      );
-      if (existingItemIndex !== -1) {
+      // Check if the item already exists in the basket by its ID
+      if (existingItems[itemId]) {
         // Item exists, increment its quantity
-        existingItems[existingItemIndex].quantity =
-          (existingItems[existingItemIndex].quantity || 0) +
-          (newItem.quantity || 1);
+        existingItems[itemId].quantity =
+          (existingItems[itemId].quantity || 0) + (newItem.quantity || 1);
       } else {
-        // Item does not exist, add it with the next id
-        const nextId =
-          existingItems.length > 0
-            ? Math.max(...existingItems.map((item) => item.id || 0)) + 1
-            : 1;
-        newItem.id = nextId;
-        newItem.quantity = 1;
-        existingItems.push(newItem);
+        // Item does not exist, add it with its existing ID
+        existingItems[itemId] = { ...newItem, quantity: 1 };
       }
 
       await set(basketRef, {
-        uid: auth.currentUser?.uid,
+        uid: userId,
         items: existingItems,
       });
 
-      console.log("Item add to basket");
+      console.log("Item added to basket:", newItem);
     } catch (error: any) {
-      console.error("Error getting user data:", error.message);
+      console.error("Error adding item to basket:", error.message);
     } finally {
       setIsLoading(false);
     }
