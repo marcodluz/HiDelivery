@@ -19,8 +19,10 @@ const RenderItem = ({ item }: RenderItemProps) => {
       style={{ width: itemSize }}
       className="rounded-2xl justify-between mx-1 mb-5"
       onPress={() => {
-        addItem(item.id);
-        console.log(item.id);
+        if (item.id) {
+          addItem(item.id);
+          console.log(item.id);
+        }
       }}
     >
       {/* {!isBasket && <QuantityChanger type={"separate"} />} */}
