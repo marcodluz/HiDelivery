@@ -22,7 +22,7 @@ const Home = () => {
         />
       </View>
       <View className="absolute w-full bottom-4 ml-5">
-        <Button>View basket</Button>
+        <Button>View basket (1)</Button>
       </View>
     </View>
   );
