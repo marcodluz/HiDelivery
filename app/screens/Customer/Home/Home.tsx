@@ -3,7 +3,7 @@ import { View, FlatList, TextInput } from "react-native";
 import { useItems } from "@/app/services/useItems";
 import Item from "@/app/components/item/Item";
 import { defaultScreen } from "@/app/styles/Global";
-import Button from "@/app/components/ui/inputs/button/Button";
+import { Button } from "ml-elements";
 
 const Home = () => {
   const itemsList = useItems();
