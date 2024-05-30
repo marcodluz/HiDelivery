@@ -2400,19 +2400,6 @@
 
 "@marcodluz/ml-elements@file:../ml-elements":
   version "1.0.0"
-  dependencies:
-    expo "~51.0.8"
-    nativewind "^2.0.11"
-    react "18.2.0"
-    react-native "0.74.1"
-
-"@marcodluz/ml-elements@file:../ml-elements/":
-  version "1.0.0"
-  dependencies:
-    expo "~51.0.8"
-    nativewind "^2.0.11"
-    react "18.2.0"
-    react-native "0.74.1"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -7218,11 +7205,6 @@ mkdirp@^1.0.3, mkdirp@^1.0.4:
 
 "ml-elements@file:../ml-elements":
   version "1.0.0"
-  dependencies:
-    expo "~51.0.8"
-    nativewind "^2.0.11"
-    react "18.2.0"
-    react-native "0.74.1"
 
 ms@2.0.0:
   version "2.0.0"

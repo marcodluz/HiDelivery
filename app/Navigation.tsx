@@ -1,17 +1,17 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
-import ResetPassword from "@/app/screens/public/resetPassword/ResetPassword";
-import ResetConfirmation from "@/app/screens/public/resetPassword/ResetConfirmation";
+import ResetPassword from "@/app/screens/public/reset_password/ResetPassword";
+import ResetConfirmation from "@/app/screens/public/reset_password/ResetConfirmation";
 import CustomerNavigation from "@/app/screens/customer/CustomerNavigation";
-import GetStarted from "@/app/screens/public/getStarted/GetStarted";
-import VerifyEmailCode from "@/app/screens/public/createAccount/VerifyEmailCode";
-import CreateAccount from "@/app/screens/public/createAccount";
+import GetStarted from "@/app/screens/public/get_started/GetStarted";
+import VerifyEmailCode from "@/app/screens/public/create_account/VerifyEmailCode";
+import CreateAccount from "@/app/screens/public/create_account";
 import Orders from "@/app/screens/driver/orders/Orders";
-import ViewOrder from "@/app/screens/driver/viewOrder/ViewOrder";
+import ViewOrder from "@/app/screens/driver/view_order/ViewOrder";
 import Welcome from "@/app/screens/public/welcome/Welcome";
 import Login from "@/app/screens/public/login/Login";
 import Home from "@/app/screens/customer/home/Home";
-import SelectAddress from "@/app/screens/customer/selectAddress/SelectAddress";
+import SelectAddress from "@/app/screens/customer/select_address/SelectAddress";
 import { NavigationContainer } from "@react-navigation/native";
 import { useAuth } from "./context/AuthContext";
 

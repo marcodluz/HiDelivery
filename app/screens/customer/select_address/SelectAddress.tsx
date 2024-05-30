@@ -1,5 +1,5 @@
 import React from "react";
-import AddressSearchBar from "@/app/components/addressSearchBar/AddressSearchBar";
+import AddressSearchBar from "@/app/components/address_search_bar/AddressSearchBar";
 import { View } from "react-native";
 import { useAddress } from "@/app/context/AddressContext";
 import Map from "@/app/components/map/Map";
